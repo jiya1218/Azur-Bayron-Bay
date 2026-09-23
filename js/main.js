@@ -151,10 +151,16 @@ function initVideoModals() {
   if (!modal || !player) return;
 
   function openVideo(src) {
+    if (!src) return;
     player.src = src;
+    player.load();
     modal.classList.add('open');
-    player.play().catch(() => {});
     document.body.style.overflow = 'hidden';
+
+    const playPromise = player.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {});
+    }
   }
 
   function closeVideo() {

@@ -72,6 +72,8 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
@@ -81,6 +83,8 @@ body {
   line-height: 1.7;
   font-weight: 400;
   overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -443,7 +447,7 @@ button, input, select, textarea {
 .mobile-drawer {
   position: fixed;
   top: 0;
-  right: -100%;
+  right: 0;
   width: 100%;
   max-width: 380px;
   height: 100vh;
@@ -454,12 +458,17 @@ button, input, select, textarea {
   flex-direction: column;
   justify-content: space-between;
   padding: 5.5rem 2rem 2.5rem;
-  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
   overflow-y: auto;
 }
 
 .mobile-drawer.open {
-  right: 0;
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .drawer-overlay {
@@ -1955,22 +1964,34 @@ button, input, select, textarea {
     height: 36px;
   }
   .panoramic-panel {
-    flex: 0 0 92% !important;
-    height: 360px !important;
+    flex: 0 0 88% !important;
+    height: 300px !important;
+    border-radius: 12px !important;
   }
   .aloha-cards-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  .aloha-card {
+    aspect-ratio: 4 / 3 !important;
+    border-radius: 12px !important;
+  }
+  .aloha-card-badge {
+    padding: 0.35rem 0.65rem !important;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.1em !important;
+    border-radius: 4px !important;
   }
   .aloha-intro-title {
-    font-size: 2.15rem;
+    font-size: 1.85rem !important;
   }
   .aloha-options-title {
-    font-size: 1.65rem;
+    font-size: 1.45rem !important;
   }
   .insta-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
   }
   .footer-aloha-links {
-    gap: 1.15rem;
+    gap: 1rem !important;
   }
 }
