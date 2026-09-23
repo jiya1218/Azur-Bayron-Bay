@@ -1,0 +1,497 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Group Bookings & Private Retreats | Azur Byron Bay</title>
+  <meta name="description" content="Exclusive private retreat for up to 22 guests in Byron Bay. Perfect for milestone birthdays, family getaways, reunions, and intimate celebrations. Pool, spa, tropical gardens.">
+  <link rel="icon" type="image/png" href="Logo/azur.png">
+
+  <!-- Core & Mobile App CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile-app.css">
+  <style>
+    .page-hero {
+      padding: 10rem 0 4rem;
+      background: linear-gradient(rgba(26, 28, 30, 0.55), rgba(26, 28, 30, 0.75)), url('Home/Images/Slider 4.jpg') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+    }
+    .group-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+    .group-feat-card {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .group-feat-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--text-primary);
+    }
+    .group-feat-card p {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .exclusively-yours-box {
+      background: var(--bg-dark);
+      color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 4.5rem;
+      margin: 5rem 0;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: 2rem 0;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9375rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .checklist-item svg {
+      color: var(--accent-gold);
+      flex-shrink: 0;
+    }
+    .inquiry-split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+      background: #fff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 4rem;
+      box-shadow: var(--shadow-md);
+    }
+    @media (max-width: 992px) {
+      .group-features-grid {
+        grid-template-columns: 1fr;
+      }
+      .exclusively-yours-box {
+        grid-template-columns: 1fr;
+        padding: 2.5rem;
+      }
+      .inquiry-split-grid {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+      }
+      .checklist-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 768px) {
+      .page-hero {
+        padding: 7rem 0 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+       SITE HEADER / NAVBAR (Aloha Byron Bay Style)
+       ========================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container container-wide">
+      <div class="header-inner">
+        <!-- Brand Logo -->
+        <a href="index.html" class="header-brand" aria-label="Azur Byron Bay Homepage">
+          <img src="Logo/AZUR BLACK CLEAR.png" alt="Azur Byron Bay" class="header-logo">
+        </a>
+
+        <!-- Desktop Navigation & Action -->
+        <div class="header-nav-wrap">
+          <nav class="desktop-nav" aria-label="Main Navigation">
+            <ul class="nav-links">
+              <li><a href="index.html" class="nav-link">Home</a></li>
+              <li><a href="about.html" class="nav-link">About</a></li>
+              <li><a href="explore.html" class="nav-link">Explore</a></li>
+              <li><a href="rooms.html" class="nav-link">Rooms</a></li>
+              <li><a href="group-bookings.html" class="nav-link active">Group Bookings</a></li>
+              <li><a href="contact.html" class="nav-link">Contact</a></li>
+              <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+              <li><a href="blog.html" class="nav-link">Blog</a></li>
+            </ul>
+          </nav>
+
+          <button class="btn-book-top open-booking-modal" aria-label="Book your stay">
+            BOOK NOW
+          </button>
+
+          <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">
+            <div class="hamburger-icon">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="drawer-overlay"></div>
+  <aside class="mobile-drawer" aria-label="Mobile Navigation Menu">
+    <div>
+      <div style="margin-bottom: 2rem;">
+        <img src="Logo/AZUR BLACK CLEAR.png" alt="Azur Byron Bay" style="height: 44px;">
+      </div>
+      <ul class="drawer-links">
+        <li><a href="index.html" class="drawer-link">Home <span>→</span></a></li>
+        <li><a href="about.html" class="drawer-link">About <span>→</span></a></li>
+        <li><a href="explore.html" class="drawer-link">Explore <span>→</span></a></li>
+        <li><a href="rooms.html" class="drawer-link">Rooms <span>→</span></a></li>
+        <li><a href="group-bookings.html" class="drawer-link active">Group Bookings <span>→</span></a></li>
+        <li><a href="contact.html" class="drawer-link">Contact <span>→</span></a></li>
+        <li><a href="gallery.html" class="drawer-link">Gallery <span>→</span></a></li>
+        <li><a href="blog.html" class="drawer-link">Blog <span>→</span></a></li>
+      </ul>
+    </div>
+
+    <div class="drawer-footer">
+      <button class="btn-book-top open-booking-modal" style="width: 100%; text-align: center; justify-content: center; padding: 1rem;">
+        BOOK NOW
+      </button>
+      <a href="tel:+61266857500" class="drawer-contact-item">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>(02) 6685 7500</span>
+      </a>
+      <div class="drawer-contact-item">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>44 Shirley Street, Byron Bay NSW</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       PAGE HERO
+       ========================================================================== -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker kicker-light">GROUP BOOKINGS</span>
+      <h1 class="heading-1">Your Private Byron Bay Retreat</h1>
+      <p style="font-family: var(--font-serif); font-style: italic; font-size: 1.75rem; margin-top: 0.5rem; color: var(--accent-gold);">
+        Gather. Celebrate. Stay together.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       GROUP BOOKING DETAILS (Exact copy from Group Bookings Copy Writing.docx)
+       ========================================================================== -->
+  <main style="padding: 5rem 0;">
+    <div class="container">
+
+      <!-- Intro Narrative -->
+      <div class="section-header-center" style="max-width: 860px; margin-bottom: 4rem;">
+        <span class="kicker">EXCLUSIVE ACCOMMODATION</span>
+        <h2 style="font-family: var(--font-serif); font-size: clamp(2.2rem, 3.8vw, 3.25rem); line-height: 1.2;">
+          Private Luxury for Up to 22 Guests
+        </h2>
+        <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary); margin-top: 1.5rem;">
+          For milestone birthdays, family getaways, intimate celebrations or weekends away with friends, Azur Byron Bay offers a relaxed and private setting for bringing your favourite people together.
+        </p>
+        <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary); margin-top: 1rem;">
+          With exclusive use of the property, Azur can accommodate <strong>up to 22 guests</strong>, giving your group the freedom to settle in, slow down and enjoy Byron Bay entirely at your own pace.
+        </p>
+        <p style="font-size: 1.0625rem; line-height: 1.8; color: var(--text-secondary); margin-top: 1rem;">
+          Spacious accommodation, tropical gardens, shared entertaining areas, a swimming pool and hot tub create an effortless setting for long lunches, late conversations and memorable days spent together. All just a short walk from Byron Bay's town centre and Main Beach.
+        </p>
+      </div>
+
+      <!-- Made for Getting Together Section -->
+      <section style="margin: 4.5rem 0;">
+        <div class="story-header-grid" style="border-bottom: none; margin-bottom: 2rem;">
+          <div class="story-col-title">
+            <span class="kicker">DESIGNED FOR GROUPS</span>
+            <h2>Made for Getting Together</h2>
+          </div>
+          <div class="story-col-text">
+            <p>
+              Some occasions deserve more than separate hotel rooms.
+            </p>
+            <p style="margin-top: 0.75rem;">
+              At Azur, your group can stay together while still having the space to retreat when you need it. From couples and families to groups of friends, the property has been designed around relaxed shared living, with plenty of room to gather indoors and out.
+            </p>
+          </div>
+          <div>
+            <span style="font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-terracotta);">
+              PERFECT FOR:
+            </span>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 0.85rem; justify-content: center; margin-top: 1.5rem;">
+          <span class="group-pill" style="background: var(--bg-secondary); border-color: var(--border-light); color: var(--text-primary); font-size: 0.875rem; padding: 0.5rem 1.25rem;">Milestone celebrations</span>
+          <span class="group-pill" style="background: var(--bg-secondary); border-color: var(--border-light); color: var(--text-primary); font-size: 0.875rem; padding: 0.5rem 1.25rem;">Birthdays</span>
+          <span class="group-pill" style="background: var(--bg-secondary); border-color: var(--border-light); color: var(--text-primary); font-size: 0.875rem; padding: 0.5rem 1.25rem;">Family gatherings</span>
+          <span class="group-pill" style="background: var(--bg-secondary); border-color: var(--border-light); color: var(--text-primary); font-size: 0.875rem; padding: 0.5rem 1.25rem;">Friends' getaways</span>
+          <span class="group-pill" style="background: var(--bg-secondary); border-color: var(--border-light); color: var(--text-primary); font-size: 0.875rem; padding: 0.5rem 1.25rem;">Reunions</span>
+          <span class="group-pill" style="background: var(--bg-secondary); border-color: var(--border-light); color: var(--text-primary); font-size: 0.875rem; padding: 0.5rem 1.25rem;">Pre-wedding stays</span>
+          <span class="group-pill" style="background: var(--bg-secondary); border-color: var(--border-light); color: var(--text-primary); font-size: 0.875rem; padding: 0.5rem 1.25rem;">Small retreats</span>
+          <span class="group-pill" style="background: var(--bg-secondary); border-color: var(--border-light); color: var(--text-primary); font-size: 0.875rem; padding: 0.5rem 1.25rem;">Special occasions</span>
+        </div>
+      </section>
+
+      <!-- Exclusively Yours Callout Box -->
+      <section class="exclusively-yours-box">
+        <div>
+          <span class="kicker kicker-light">PRIVACY & FREEDOM</span>
+          <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.75rem); line-height: 1.2; margin-bottom: 1rem;">
+            Exclusively Yours
+          </h2>
+          <p style="font-size: 1.0625rem; color: rgba(255, 255, 255, 0.85); line-height: 1.75;">
+            When you reserve Azur for your group, the entire property becomes your private Byron Bay hideaway.
+          </p>
+
+          <div class="checklist-grid">
+            <div class="checklist-item">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Up to 22 guests</span>
+            </div>
+            <div class="checklist-item">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Exclusive use of the property</span>
+            </div>
+            <div class="checklist-item">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Multiple bedrooms & living spaces</span>
+            </div>
+            <div class="checklist-item">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Private pool & hot tub</span>
+            </div>
+            <div class="checklist-item">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Tropical gardens & outdoor entertaining</span>
+            </div>
+            <div class="checklist-item">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Walking distance to town & Main Beach</span>
+            </div>
+          </div>
+
+          <p style="font-size: 0.9375rem; color: rgba(255, 255, 255, 0.75); line-height: 1.6;">
+            No crowded hotel corridors. No need to split the group between different properties. Just your people, your space and your time together.
+          </p>
+        </div>
+
+        <div>
+          <img src="Home/Images/Accom Option - 4BR Beach House.jpg" alt="Azur Byron Bay Exclusive Property" style="border-radius: var(--radius-md); box-shadow: var(--shadow-lg); width: 100%;">
+        </div>
+      </section>
+
+      <!-- Planning Something Special? & Direct Inquiry Form -->
+      <section class="inquiry-split-grid" id="group-inquiry">
+        <div>
+          <span class="kicker">BESPOKE ARRANGEMENTS</span>
+          <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.2vw, 2.75rem); line-height: 1.2; margin-bottom: 1.25rem;">
+            Planning Something Special?
+          </h2>
+          <p style="font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 1.5rem;">
+            Every group stay is a little different. Speak directly with our team and we'll help you find the best accommodation arrangement for your group, answer any questions and provide our best available group rate.
+          </p>
+          <p style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-primary); font-weight: 500; margin-bottom: 2rem;">
+            Let's plan your stay.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <a href="tel:+61266857500" class="btn btn-secondary" style="justify-content: flex-start;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>CALL US: (02) 6685 7500</span>
+            </a>
+            <a href="mailto:stay@azurbyronbay.com.au" class="btn btn-text" style="align-self: flex-start;">
+              <span>Email: stay@azurbyronbay.com.au →</span>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <form class="inquiry-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div class="app-form-group">
+              <label class="app-form-label">Group / Event Type</label>
+              <select class="app-form-select" required>
+                <option value="">Select occasion...</option>
+                <option value="milestone">Milestone Birthday / Celebration</option>
+                <option value="family">Family Getaway / Reunion</option>
+                <option value="friends">Friends' Holiday</option>
+                <option value="pre-wedding">Pre-Wedding / Bridal Party</option>
+                <option value="retreat">Wellness / Creative Retreat</option>
+                <option value="other">Special Occasion</option>
+              </select>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="app-form-group">
+                <label class="app-form-label">Approx Guests (Max 22)</label>
+                <input type="number" class="app-form-input" min="6" max="22" value="16" required>
+              </div>
+              <div class="app-form-group">
+                <label class="app-form-label">Target Dates</label>
+                <input type="date" class="app-form-input" required>
+              </div>
+            </div>
+
+            <div class="app-form-group">
+              <label class="app-form-label">Your Name</label>
+              <input type="text" class="app-form-input" placeholder="Primary contact name" required>
+            </div>
+
+            <div class="app-form-group">
+              <label class="app-form-label">Email Address</label>
+              <input type="email" class="app-form-input" placeholder="you@domain.com" required>
+            </div>
+
+            <div class="app-form-group">
+              <label class="app-form-label">Phone Number</label>
+              <input type="tel" class="app-form-input" placeholder="+61 ..." required>
+            </div>
+
+            <div class="app-form-group">
+              <label class="app-form-label">Special Requests or Questions</label>
+              <textarea class="app-form-input" rows="3" placeholder="Tell us about your celebration, catering needs, or preferred arrangements..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-terracotta" style="padding: 1rem;">
+              SEND AN INQUIRY
+            </button>
+          </form>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+    <!-- ==========================================================================
+       SITE FOOTER (Aloha Byron Bay Signature Earth Tone Footer)
+       ========================================================================== -->
+  <footer class="site-footer-aloha">
+    <div class="container">
+      <div class="footer-aloha-container">
+        <form class="footer-aloha-form" onsubmit="event.preventDefault(); window.azurToast && window.azurToast('Thank you for subscribing to Azur Byron Bay.');">
+          <input type="text" placeholder="NAME" class="aloha-subscribe-input" aria-label="Your Name" required>
+          <input type="email" placeholder="EMAIL" class="aloha-subscribe-input" aria-label="Your Email" required>
+          <button type="submit" class="btn-aloha-subscribe">SUBSCRIBE</button>
+        </form>
+
+        <ul class="footer-aloha-links">
+          <li><a href="#" class="footer-aloha-link">TERMS & CONDITIONS</a></li>
+          <li><a href="#" class="footer-aloha-link">PRIVACY POLICY</a></li>
+          <li><a href="contact.html" class="footer-aloha-link">CONTACT</a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener" class="footer-aloha-link">INSTAGRAM</a></li>
+          <li><a href="https://facebook.com" target="_blank" rel="noopener" class="footer-aloha-link">FACEBOOK</a></li>
+          <li><a href="https://pinterest.com" target="_blank" rel="noopener" class="footer-aloha-link">PINTEREST</a></li>
+        </ul>
+
+        <p class="footer-aloha-credits">
+          44 Shirley Street, Byron Bay NSW 2481, Australia • Concierge: <a href="tel:+61266857500" style="color: inherit; text-decoration: underline;">(02) 6685 7500</a> • <a href="mailto:stay@azurbyronbay.com.au" style="color: inherit; text-decoration: underline;">stay@azurbyronbay.com.au</a><br>
+          Just 5 minutes walk to Byron Town Centre & Main Beach.<br>
+          <span style="display: block; margin-top: 0.75rem; opacity: 0.8; font-size: 0.75rem;">
+            Azur Byron Bay acknowledges the Arakwal people of the Bundjalung Nation, the traditional custodians of this land.
+          </span>
+          © <span id="year">2026</span> Azur Byron Bay. All Rights Reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MOBILE APP BOTTOM DOCK
+       ========================================================================== -->
+  <nav class="mobile-app-bottom-bar" aria-label="Mobile Bottom App Bar">
+    <a href="index.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <span class="app-dock-label">Home</span>
+    </a>
+    <a href="rooms.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></svg>
+      <span class="app-dock-label">Rooms</span>
+    </a>
+    <button class="app-dock-book-btn open-booking-modal" aria-label="Open booking sheet">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>Book</span>
+    </button>
+    <a href="about.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      <span class="app-dock-label">Layout</span>
+    </a>
+    <a href="gallery.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span class="app-dock-label">Gallery</span>
+    </a>
+  </nav>
+
+  <!-- Slide-up Bottom Sheet Modal -->
+  <div class="bottom-sheet-backdrop"></div>
+  <div class="bottom-sheet-modal" role="dialog" aria-modal="true">
+    <div class="sheet-drag-handle-bar"><div class="sheet-drag-handle"></div></div>
+    <div class="sheet-header">
+      <h3 class="sheet-title">Check Availability</h3>
+      <button class="sheet-close-btn" aria-label="Close">✕</button>
+    </div>
+    <form class="sheet-body inquiry-form">
+      <div class="app-form-group">
+        <label class="app-form-label">Accommodation Type</label>
+        <select class="app-form-select" id="sheet-room-select" name="room_type">
+          <option value="entire-estate" selected>Entire Azur Estate (Up to 22)</option>
+          <option value="beach-house">4BR Beach House + The Pass</option>
+          <option value="meraki-condo">3BR Meraki Condo</option>
+          <option value="poolside-suite">1BR Poolside Suite</option>
+        </select>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+        <div class="app-form-group">
+          <label class="app-form-label">Check In</label>
+          <input type="date" class="app-form-input" id="sheet-checkin" name="checkin" required>
+        </div>
+        <div class="app-form-group">
+          <label class="app-form-label">Check Out</label>
+          <input type="date" class="app-form-input" id="sheet-checkout" name="checkout" required>
+        </div>
+      </div>
+      <div class="app-form-group">
+        <label class="app-form-label">Guests</label>
+        <div class="guest-stepper-wrap" data-min="1" data-max="22">
+          <button type="button" class="stepper-btn stepper-dec">−</button>
+          <span class="stepper-value">16</span>
+          <button type="button" class="stepper-btn stepper-inc">+</button>
+          <input type="hidden" name="guests_count" value="16">
+        </div>
+      </div>
+      <div class="app-form-group">
+        <label class="app-form-label">Your Name</label>
+        <input type="text" class="app-form-input" placeholder="Full name" required>
+      </div>
+      <div class="app-form-group">
+        <label class="app-form-label">Email or Phone</label>
+        <input type="text" class="app-form-input" placeholder="you@domain.com or phone" required>
+      </div>
+      <button type="submit" class="btn btn-terracotta" style="width: 100%; padding: 1rem;">Send Reservation Inquiry</button>
+    </form>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/booking.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Explore Byron Bay | Azur Byron Bay</title>
+  <meta name="description" content="Discover the best of Byron Bay from 44 Shirley Street: Main Beach, Cape Byron Lighthouse, world-class dining, and hinterland escapes.">
+  <link rel="icon" type="image/png" href="Logo/azur.png">
+
+  <!-- Core & Mobile App CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile-app.css">
+  <style>
+    .page-hero {
+      padding: 10rem 0 4rem;
+      background: linear-gradient(rgba(26, 28, 30, 0.45), rgba(26, 28, 30, 0.7)), url('Home/Images/Slider 5.jpg') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+    }
+    .redirect-banner {
+      background: linear-gradient(135deg, #1b3847 0%, #254b5c 100%);
+      border-radius: var(--radius-lg);
+      color: #fff;
+      padding: 3.5rem;
+      margin: 4rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      box-shadow: var(--shadow-lg);
+    }
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+    .explore-card {
+      background: #fff;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+    }
+    .explore-card-img {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+    .explore-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .explore-card:hover .explore-card-img img {
+      transform: scale(1.06);
+    }
+    .explore-card-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+    .explore-distance-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-terracotta);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .explore-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-primary);
+    }
+    .explore-card-desc {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    @media (max-width: 992px) {
+      .redirect-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 2.5rem 1.75rem;
+      }
+      .explore-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 768px) {
+      .page-hero {
+        padding: 7rem 0 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+       SITE HEADER / NAVBAR (Aloha Byron Bay Style)
+       ========================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container container-wide">
+      <div class="header-inner">
+        <!-- Brand Logo -->
+        <a href="index.html" class="header-brand" aria-label="Azur Byron Bay Homepage">
+          <img src="Logo/AZUR BLACK CLEAR.png" alt="Azur Byron Bay" class="header-logo">
+        </a>
+
+        <!-- Desktop Navigation & Action -->
+        <div class="header-nav-wrap">
+          <nav class="desktop-nav" aria-label="Main Navigation">
+            <ul class="nav-links">
+              <li><a href="index.html" class="nav-link">Home</a></li>
+              <li><a href="about.html" class="nav-link">About</a></li>
+              <li><a href="explore.html" class="nav-link active">Explore</a></li>
+              <li><a href="rooms.html" class="nav-link">Rooms</a></li>
+              <li><a href="group-bookings.html" class="nav-link">Group Bookings</a></li>
+              <li><a href="contact.html" class="nav-link">Contact</a></li>
+              <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+              <li><a href="blog.html" class="nav-link">Blog</a></li>
+            </ul>
+          </nav>
+
+          <button class="btn-book-top open-booking-modal" aria-label="Book your stay">
+            BOOK NOW
+          </button>
+
+          <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">
+            <div class="hamburger-icon">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="drawer-overlay"></div>
+  <aside class="mobile-drawer" aria-label="Mobile Navigation Menu">
+    <div>
+      <div style="margin-bottom: 2rem;">
+        <img src="Logo/AZUR BLACK CLEAR.png" alt="Azur Byron Bay" style="height: 44px;">
+      </div>
+      <ul class="drawer-links">
+        <li><a href="index.html" class="drawer-link">Home <span>→</span></a></li>
+        <li><a href="about.html" class="drawer-link">About <span>→</span></a></li>
+        <li><a href="explore.html" class="drawer-link active">Explore <span>→</span></a></li>
+        <li><a href="rooms.html" class="drawer-link">Rooms <span>→</span></a></li>
+        <li><a href="group-bookings.html" class="drawer-link">Group Bookings <span>→</span></a></li>
+        <li><a href="contact.html" class="drawer-link">Contact <span>→</span></a></li>
+        <li><a href="gallery.html" class="drawer-link">Gallery <span>→</span></a></li>
+        <li><a href="blog.html" class="drawer-link">Blog <span>→</span></a></li>
+      </ul>
+    </div>
+
+    <div class="drawer-footer">
+      <button class="btn-book-top open-booking-modal" style="width: 100%; text-align: center; justify-content: center; padding: 1rem;">
+        BOOK NOW
+      </button>
+      <a href="tel:+61266857500" class="drawer-contact-item">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>(02) 6685 7500</span>
+      </a>
+      <div class="drawer-contact-item">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>44 Shirley Street, Byron Bay NSW</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       PAGE HERO
+       ========================================================================== -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker kicker-light">LOCAL GUIDE</span>
+      <h1 class="heading-1">Explore Byron Bay & Surrounds</h1>
+      <p style="max-width: 650px; margin: 1rem auto 0; font-size: 1.125rem; color: rgba(255,255,255,0.92);">
+        Located on Shirley Street, Azur places you moments from world-renowned surf beaches, coastal tracks, artisan cafes, and hinterland sanctuaries.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       VISIT NSW OFFICIAL REDIRECT BANNER (Requested in brief)
+       ========================================================================== -->
+  <main class="container">
+    <div class="redirect-banner">
+      <div>
+        <span class="kicker" style="color: var(--accent-gold);">OFFICIAL DESTINATION PORTAL</span>
+        <h2 style="font-family: var(--font-serif); font-size: clamp(1.8rem, 2.8vw, 2.4rem); margin-bottom: 0.5rem;">
+          Looking for the Official Byron Bay Guide?
+        </h2>
+        <p style="font-size: 1rem; color: rgba(255,255,255,0.85); max-width: 680px;">
+          For upcoming events, local farmer's markets, surf reports, national park trails, and regional travel updates, visit the official Destination NSW guide.
+        </p>
+      </div>
+
+      <a href="https://www.visitnsw.com/destinations/north-coast/byron-bay-area/byron-bay" target="_blank" rel="noopener" class="btn btn-terracotta" style="white-space: nowrap;">
+        Explore on VisitNSW.com ↗
+      </a>
+    </div>
+
+    <!-- Curated Local Highlights -->
+    <div class="section-header-center">
+      <span class="kicker">WALKING DISTANCE & BEYOND</span>
+      <h2>Byron Bay At Your Doorstep</h2>
+      <p>Everything you could want in a coastal holiday is just a leisurely stroll away.</p>
+    </div>
+
+    <div class="explore-grid">
+      <!-- Card 1 -->
+      <article class="explore-card">
+        <div class="explore-card-img">
+          <img src="Home/Images/Slider 2.jpg" alt="Main Beach Byron Bay" loading="lazy">
+        </div>
+        <div class="explore-card-body">
+          <div>
+            <span class="explore-distance-tag">5 MIN WALK (450M)</span>
+            <h3 class="explore-card-title">Main Beach & Surf Club</h3>
+            <p class="explore-card-desc">
+              Gentle rolling waves, golden sand, and panoramic views out to Julian Rocks and the Cape. Perfect for morning swims, surf lessons, or watching the sunset over Mount Warning.
+            </p>
+          </div>
+          <a href="https://www.visitnsw.com/destinations/north-coast/byron-bay-area/byron-bay" target="_blank" rel="noopener" class="btn-text" style="margin-top: 1.5rem;">
+            Beach Guide ↗
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="explore-card">
+        <div class="explore-card-img">
+          <img src="Home/Images/Slider 1.jpg" alt="Byron Town Centre" loading="lazy">
+        </div>
+        <div class="explore-card-body">
+          <div>
+            <span class="explore-distance-tag">5 MIN WALK (400M)</span>
+            <h3 class="explore-card-title">Byron Town & Culinary Scene</h3>
+            <p class="explore-card-desc">
+              Wander past independent boutiques, organic juice bars, and award-winning dining including Light Years Asian Diner, Bang Bang, The Balcony Bar, and artisanal coffee roasters.
+            </p>
+          </div>
+          <a href="https://www.visitnsw.com/destinations/north-coast/byron-bay-area/byron-bay" target="_blank" rel="noopener" class="btn-text" style="margin-top: 1.5rem;">
+            Dining Directory ↗
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="explore-card">
+        <div class="explore-card-img">
+          <img src="Home/Images/Slider 4.jpg" alt="Cape Byron Lighthouse" loading="lazy">
+        </div>
+        <div class="explore-card-body">
+          <div>
+            <span class="explore-distance-tag">7 MIN DRIVE / SCENIC WALK</span>
+            <h3 class="explore-card-title">Cape Byron Lighthouse</h3>
+            <p class="explore-card-desc">
+              Australia's most easterly point. Take the legendary coastal walking track past The Pass and Wategos Beach, and look out for resident pods of bottlenose dolphins and migrating humpback whales.
+            </p>
+          </div>
+          <a href="https://www.visitnsw.com/destinations/north-coast/byron-bay-area/byron-bay" target="_blank" rel="noopener" class="btn-text" style="margin-top: 1.5rem;">
+            Trail Information ↗
+          </a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+    <!-- ==========================================================================
+       SITE FOOTER (Aloha Byron Bay Signature Earth Tone Footer)
+       ========================================================================== -->
+  <footer class="site-footer-aloha">
+    <div class="container">
+      <div class="footer-aloha-container">
+        <form class="footer-aloha-form" onsubmit="event.preventDefault(); window.azurToast && window.azurToast('Thank you for subscribing to Azur Byron Bay.');">
+          <input type="text" placeholder="NAME" class="aloha-subscribe-input" aria-label="Your Name" required>
+          <input type="email" placeholder="EMAIL" class="aloha-subscribe-input" aria-label="Your Email" required>
+          <button type="submit" class="btn-aloha-subscribe">SUBSCRIBE</button>
+        </form>
+
+        <ul class="footer-aloha-links">
+          <li><a href="#" class="footer-aloha-link">TERMS & CONDITIONS</a></li>
+          <li><a href="#" class="footer-aloha-link">PRIVACY POLICY</a></li>
+          <li><a href="contact.html" class="footer-aloha-link">CONTACT</a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener" class="footer-aloha-link">INSTAGRAM</a></li>
+          <li><a href="https://facebook.com" target="_blank" rel="noopener" class="footer-aloha-link">FACEBOOK</a></li>
+          <li><a href="https://pinterest.com" target="_blank" rel="noopener" class="footer-aloha-link">PINTEREST</a></li>
+        </ul>
+
+        <p class="footer-aloha-credits">
+          44 Shirley Street, Byron Bay NSW 2481, Australia • Concierge: <a href="tel:+61266857500" style="color: inherit; text-decoration: underline;">(02) 6685 7500</a> • <a href="mailto:stay@azurbyronbay.com.au" style="color: inherit; text-decoration: underline;">stay@azurbyronbay.com.au</a><br>
+          Just 5 minutes walk to Byron Town Centre & Main Beach.<br>
+          <span style="display: block; margin-top: 0.75rem; opacity: 0.8; font-size: 0.75rem;">
+            Azur Byron Bay acknowledges the Arakwal people of the Bundjalung Nation, the traditional custodians of this land.
+          </span>
+          © <span id="year">2026</span> Azur Byron Bay. All Rights Reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MOBILE APP BOTTOM DOCK
+       ========================================================================== -->
+  <nav class="mobile-app-bottom-bar" aria-label="Mobile Bottom App Bar">
+    <a href="index.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <span class="app-dock-label">Home</span>
+    </a>
+    <a href="rooms.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></svg>
+      <span class="app-dock-label">Rooms</span>
+    </a>
+    <button class="app-dock-book-btn open-booking-modal" aria-label="Open booking sheet">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>Book</span>
+    </button>
+    <a href="about.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      <span class="app-dock-label">Layout</span>
+    </a>
+    <a href="gallery.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span class="app-dock-label">Gallery</span>
+    </a>
+  </nav>
+
+  <!-- Slide-up Bottom Sheet Modal -->
+  <div class="bottom-sheet-backdrop"></div>
+  <div class="bottom-sheet-modal" role="dialog" aria-modal="true">
+    <div class="sheet-drag-handle-bar"><div class="sheet-drag-handle"></div></div>
+    <div class="sheet-header">
+      <h3 class="sheet-title">Check Availability</h3>
+      <button class="sheet-close-btn" aria-label="Close">✕</button>
+    </div>
+    <form class="sheet-body inquiry-form">
+      <div class="app-form-group">
+        <label class="app-form-label">Accommodation Type</label>
+        <select class="app-form-select" id="sheet-room-select" name="room_type">
+          <option value="beach-house">4BR Beach House + The Pass</option>
+          <option value="meraki-condo">3BR Meraki Condo</option>
+          <option value="poolside-suite">1BR Poolside Suite</option>
+          <option value="entire-estate">Entire Azur Estate (Up to 22)</option>
+        </select>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+        <div class="app-form-group">
+          <label class="app-form-label">Check In</label>
+          <input type="date" class="app-form-input" id="sheet-checkin" name="checkin" required>
+        </div>
+        <div class="app-form-group">
+          <label class="app-form-label">Check Out</label>
+          <input type="date" class="app-form-input" id="sheet-checkout" name="checkout" required>
+        </div>
+      </div>
+      <div class="app-form-group">
+        <label class="app-form-label">Guests</label>
+        <div class="guest-stepper-wrap" data-min="1" data-max="22">
+          <button type="button" class="stepper-btn stepper-dec">−</button>
+          <span class="stepper-value">2</span>
+          <button type="button" class="stepper-btn stepper-inc">+</button>
+          <input type="hidden" name="guests_count" value="2">
+        </div>
+      </div>
+      <div class="app-form-group">
+        <label class="app-form-label">Your Name</label>
+        <input type="text" class="app-form-input" placeholder="Full name" required>
+      </div>
+      <div class="app-form-group">
+        <label class="app-form-label">Email or Phone</label>
+        <input type="text" class="app-form-input" placeholder="you@domain.com or phone" required>
+      </div>
+      <button type="submit" class="btn btn-terracotta" style="width: 100%; padding: 1rem;">Send Reservation Inquiry</button>
+    </form>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/booking.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,601 @@
+/* ==========================================================================
+   AZUR BYRON BAY — MOBILE APP-GRADE EXPERIENCE
+   Dedicated styles to deliver native mobile app polish on smartphones & tablets
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll and add bottom clearance for the app dock */
+  body {
+    padding-bottom: calc(74px + env(safe-area-inset-bottom, 12px));
+    -webkit-overflow-scrolling: touch;
+  }
+
+  :root {
+    --container-padding: 20px;
+  }
+
+  /* Compact Native-Feel Header */
+  .site-header {
+    padding: 0.75rem 0 !important;
+    background-color: rgba(250, 248, 245, 0.96) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  }
+
+  .site-header .header-logo.logo-dark {
+    display: block !important;
+    height: 38px;
+  }
+
+  .site-header .header-logo.logo-light {
+    display: none !important;
+  }
+
+  .site-header .mobile-nav-toggle {
+    color: var(--text-primary) !important;
+  }
+
+  .header-actions {
+    gap: 0.75rem;
+  }
+
+  .header-actions .btn-book-top {
+    display: none; /* Book action handled by the bottom app dock */
+  }
+
+  .header-quick-call {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-full);
+    background: var(--accent-terracotta-light);
+    color: var(--accent-terracotta);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+  }
+
+  .header-quick-call svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Hero Adjustments for Mobile App */
+  .hero {
+    min-height: 82vh;
+    padding-top: 5rem;
+  }
+
+  .hero-content {
+    padding: 3rem 1rem 3rem;
+  }
+
+  .hero-title {
+    font-size: 2.35rem;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-controls {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .hero-control-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Booking bar in mobile: simplified trigger card that opens the bottom sheet */
+  .booking-bar-wrapper {
+    margin-top: -2rem;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+  }
+
+  .booking-bar {
+    display: none; /* Desktop grid hidden on mobile */
+  }
+
+  .booking-bar-mobile-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+  }
+
+  .mobile-trigger-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .mobile-trigger-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .mobile-trigger-desc {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  .mobile-trigger-btn {
+    background-color: var(--accent-terracotta);
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* Story / About Section */
+  .section-story {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .story-header-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+  }
+
+  .story-col-title h2 {
+    font-size: 2.15rem;
+  }
+
+  .story-col-text {
+    font-size: 0.96875rem;
+    line-height: 1.7;
+  }
+
+  .story-col-pillars {
+    grid-column: span 1;
+    border-left: none;
+    border-top: 1px solid var(--border-light);
+    padding-left: 0;
+    padding-top: 1.25rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .pillar-item {
+    font-size: 0.75rem;
+  }
+
+  .story-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .story-card-title {
+    font-size: 1.35rem;
+  }
+
+  /* Amenities Strip: Mobile 2-column or 3-column app cards */
+  .amenities-strip {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1.5rem;
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .amenity-stat-item {
+    padding: 0 !important;
+    border: none !important;
+    gap: 0.75rem;
+  }
+
+  .stat-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .stat-number {
+    font-size: 1.15rem;
+  }
+
+  .stat-label {
+    font-size: 0.6875rem;
+  }
+
+  /* Estate Layout Box */
+  .estate-layout-box {
+    padding: 1.5rem;
+  }
+
+  .estate-layout-text h3 {
+    font-size: 1.85rem;
+  }
+
+  .estate-layout-text p {
+    font-size: 0.9375rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Rooms Showcase */
+  .section-rooms {
+    padding: 4rem 0;
+  }
+
+  .room-card-content {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .room-title {
+    font-size: 1.65rem;
+  }
+
+  .room-specs-list {
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .room-spec-item {
+    font-size: 0.75rem;
+  }
+
+  .room-card-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .room-card-actions .btn {
+    width: 100%;
+  }
+
+  /* Group Banner */
+  .section-group-banner {
+    padding: 3.5rem 0;
+  }
+
+  .group-banner-content {
+    padding: 2.25rem 1.5rem;
+  }
+
+  .group-banner-content h2 {
+    font-size: 1.85rem;
+  }
+
+  .group-tagline {
+    font-size: 1.15rem;
+  }
+
+  .group-banner-content p {
+    font-size: 0.9375rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .group-pills-wrap {
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .group-banner-img {
+    min-height: 260px;
+  }
+
+  /* Instagram Grid */
+  .insta-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 3.5rem 0 2rem;
+  }
+
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+/* ==========================================================================
+   MOBILE APP DOCK (FIXED BOTTOM NAVIGATION)
+   ========================================================================== */
+.mobile-app-bottom-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-app-bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(64px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border-light);
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+    z-index: 1000;
+  }
+
+  .app-dock-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    flex: 1;
+    height: 100%;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .app-dock-item:active {
+    transform: scale(0.92);
+  }
+
+  .app-dock-item.active {
+    color: var(--accent-terracotta);
+  }
+
+  .app-dock-item svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 2px;
+  }
+
+  .app-dock-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  /* Prominent Book CTA in Dock */
+  .app-dock-book-btn {
+    background: var(--accent-terracotta);
+    color: #ffffff !important;
+    border-radius: var(--radius-full);
+    padding: 0.4rem 0.9rem;
+    margin: 0 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    box-shadow: 0 4px 12px rgba(190, 113, 71, 0.35);
+  }
+
+  .app-dock-book-btn:active {
+    transform: scale(0.95);
+  }
+
+  .app-dock-book-btn svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2.2px;
+  }
+}
+
+/* ==========================================================================
+   SLIDE-UP BOTTOM SHEET (NATIVE APP MODAL)
+   ========================================================================== */
+.bottom-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 17, 19, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 2500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.bottom-sheet-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bottom-sheet-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -100%;
+  max-height: 88vh;
+  background-color: #ffffff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  z-index: 2501;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+  transition: bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-bottom: env(safe-area-inset-bottom, 12px);
+}
+
+.bottom-sheet-modal.open {
+  bottom: 0;
+}
+
+/* Pull / Drag Indicator Handle */
+.sheet-drag-handle-bar {
+  width: 100%;
+  padding: 0.75rem 0 0.25rem;
+  display: flex;
+  justify-content: center;
+  cursor: grab;
+}
+
+.sheet-drag-handle {
+  width: 44px;
+  height: 5px;
+  border-radius: 3px;
+  background-color: var(--border-light);
+}
+
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sheet-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.sheet-close-btn {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.sheet-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Mobile App Steppers & Forms */
+.app-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.app-form-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+.app-form-input,
+.app-form-select {
+  border: 1px solid var(--border-light);
+  background: var(--bg-primary);
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  width: 100%;
+  outline: none;
+}
+
+.app-form-input:focus,
+.app-form-select:focus {
+  border-color: var(--accent-terracotta);
+  background: #ffffff;
+}
+
+.guest-stepper-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--border-light);
+  background: var(--bg-primary);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+}
+
+.stepper-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.stepper-value {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.sheet-summary-box {
+  background: var(--bg-sand);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-secondary);
+}
+
+.summary-row.total {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 0.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+}

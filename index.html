@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Azur Byron Bay | Luxury Boutique Accommodation in Byron Bay, NSW</title>
+  <meta name="description" content="Azur Byron Bay offers boutique coastal accommodation with a touch of Balinese charm. Just 5 minutes from town and Main Beach. Beach houses, poolside suites, and group bookings.">
+  <link rel="icon" type="image/png" href="Logo/azur.png">
+
+  <!-- Core & Mobile App CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile-app.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SITE HEADER / NAVBAR (Aloha Byron Bay Style)
+       ========================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container container-wide">
+      <div class="header-inner">
+        <!-- Brand Logo -->
+        <a href="index.html" class="header-brand" aria-label="Azur Byron Bay Homepage">
+          <img src="Logo/AZUR BLACK CLEAR.png" alt="Azur Byron Bay" class="header-logo">
+        </a>
+
+        <!-- Desktop Navigation & Action -->
+        <div class="header-nav-wrap">
+          <nav class="desktop-nav" aria-label="Main Navigation">
+            <ul class="nav-links">
+              <li><a href="index.html" class="nav-link active">Home</a></li>
+              <li><a href="about.html" class="nav-link">About</a></li>
+              <li><a href="explore.html" class="nav-link">Explore</a></li>
+              <li><a href="rooms.html" class="nav-link">Rooms</a></li>
+              <li><a href="group-bookings.html" class="nav-link">Group Bookings</a></li>
+              <li><a href="contact.html" class="nav-link">Contact</a></li>
+              <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+              <li><a href="blog.html" class="nav-link">Blog</a></li>
+            </ul>
+          </nav>
+
+          <button class="btn-book-top open-booking-modal" aria-label="Book your stay">
+            BOOK NOW
+          </button>
+
+          <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">
+            <div class="hamburger-icon">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="drawer-overlay"></div>
+  <aside class="mobile-drawer" aria-label="Mobile Navigation Menu">
+    <div>
+      <div style="margin-bottom: 2rem;">
+        <img src="Logo/AZUR BLACK CLEAR.png" alt="Azur Byron Bay" style="height: 44px;">
+      </div>
+      <ul class="drawer-links">
+        <li><a href="index.html" class="drawer-link active">Home <span>→</span></a></li>
+        <li><a href="about.html" class="drawer-link">About <span>→</span></a></li>
+        <li><a href="explore.html" class="drawer-link">Explore <span>→</span></a></li>
+        <li><a href="rooms.html" class="drawer-link">Rooms <span>→</span></a></li>
+        <li><a href="group-bookings.html" class="drawer-link">Group Bookings <span>→</span></a></li>
+        <li><a href="contact.html" class="drawer-link">Contact <span>→</span></a></li>
+        <li><a href="gallery.html" class="drawer-link">Gallery <span>→</span></a></li>
+        <li><a href="blog.html" class="drawer-link">Blog <span>→</span></a></li>
+      </ul>
+    </div>
+
+    <div class="drawer-footer">
+      <button class="btn-book-top open-booking-modal" style="width: 100%; text-align: center; justify-content: center; padding: 1rem;">
+        BOOK NOW
+      </button>
+      <a href="tel:+61266857500" class="drawer-contact-item">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>(02) 6685 7500</span>
+      </a>
+      <div class="drawer-contact-item">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>44 Shirley Street, Byron Bay NSW</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       ALOHA STYLE PANORAMIC HERO SHOWCASE
+       ========================================================================== -->
+  <section class="hero-aloha" id="hero">
+    <div class="hero-panoramic-wrapper">
+      <button class="hero-nav-arrow prev" id="panoramic-prev" aria-label="Previous view">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <div class="hero-panoramic-track" id="panoramic-track">
+        <div class="panoramic-panel">
+          <img src="Home/Images/Slider 2.jpg" alt="Azur Byron Bay Tropical Pool & Grounds" loading="eager">
+        </div>
+        <div class="panoramic-panel panel-center">
+          <img src="Home/Images/Slider 1.jpg" alt="Azur Byron Bay Sunlit Living & Deck" loading="eager">
+        </div>
+        <div class="panoramic-panel">
+          <img src="Home/Images/Accom Option - 1BR Pool Side.jpg" alt="Azur Byron Bay Poolside Suite" loading="eager">
+        </div>
+        <div class="panoramic-panel">
+          <img src="Home/Images/Accom Option - 3BR Meraki Condo.jpg" alt="Azur Byron Bay Meraki Kitchen & Terrace" loading="lazy">
+        </div>
+        <div class="panoramic-panel">
+          <img src="Home/Images/Accom Option - 4BR Beach House.jpg" alt="Azur Beach House Retreat" loading="lazy">
+        </div>
+      </div>
+
+      <button class="hero-nav-arrow next" id="panoramic-next" aria-label="Next view">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <button class="hero-video-badge-btn" data-video-src="Home/Entire Property Video.mp4">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Watch Video Tour
+      </button>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ALOHA STYLE CENTERED EDITORIAL STORY SECTION
+       ========================================================================== -->
+  <section class="section-aloha-intro">
+    <div class="container">
+      <div class="aloha-intro-container">
+        <span class="aloha-kicker">AZUR BYRON BAY, NSW</span>
+        <h1 class="aloha-intro-title">Experience Boutique Byron Bay Living.</h1>
+        <p class="aloha-intro-desc">
+          A collection of stays ranging from intimate Poolside Suites, contemporary 3BR Meraki Condo to our Signature 4BR Beach House.
+        </p>
+        <p class="aloha-intro-subtitle">
+          Moments from the Ocean, a relaxed base for your North Coast adventure.
+        </p>
+        <button class="btn-aloha-book open-booking-modal">
+          BOOK NOW
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ALOHA STYLE 4-CARD ACCOMMODATION OPTIONS SECTION
+       ========================================================================== -->
+  <section class="section-aloha-options" id="accommodation-options">
+    <div class="container container-wide">
+      <h2 class="aloha-options-title">ACCOMMODATION OPTIONS</h2>
+      <div class="aloha-cards-grid">
+        <!-- 1. Beach House -->
+        <a href="rooms.html#beach-house" class="aloha-card">
+          <img src="Home/Images/Accom Option - 4BR Beach House.jpg" alt="Beach House at Azur Byron Bay" loading="lazy">
+          <span class="aloha-card-badge">BEACH HOUSE</span>
+        </a>
+
+        <!-- 2. Meraki Condo -->
+        <a href="rooms.html#meraki-condo" class="aloha-card">
+          <img src="Home/Images/Accom Option - 3BR Meraki Condo.jpg" alt="Meraki Condo at Azur Byron Bay" loading="lazy">
+          <span class="aloha-card-badge">MERAKI CONDO</span>
+        </a>
+
+        <!-- 3. Poolside Suites -->
+        <a href="rooms.html#poolside-suites" class="aloha-card">
+          <img src="Home/Images/Accom Option - 1BR Pool Side.jpg" alt="Poolside Suites at Azur Byron Bay" loading="lazy">
+          <span class="aloha-card-badge">POOLSIDE SUITES</span>
+        </a>
+
+        <!-- 4. Group Bookings -->
+        <a href="group-bookings.html" class="aloha-card">
+          <img src="Home/Images/Slider 4.jpg" alt="Group Bookings at Azur Byron Bay" loading="lazy">
+          <span class="aloha-card-badge">GROUP BOOKINGS</span>
+        </a>
+      </div>
+
+      <div class="aloha-options-footer">
+        <button class="btn-aloha-book open-booking-modal">
+          BOOK NOW
+        </button>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="aloha-insta-handle">
+          @azurbyronbay
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FLOATING BOOKING AVAILABILITY BAR (Desktop & Mobile Trigger)
+       ========================================================================== -->
+  <div class="booking-bar-wrapper">
+    <div class="container">
+      <!-- Desktop Bar -->
+      <div class="booking-bar">
+        <div class="booking-field">
+          <label class="booking-label">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Check In
+          </label>
+          <input type="date" name="checkin" class="booking-input" id="bar-checkin">
+        </div>
+
+        <div class="booking-field">
+          <label class="booking-label">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Check Out
+          </label>
+          <input type="date" name="checkout" class="booking-input" id="bar-checkout">
+        </div>
+
+        <div class="booking-field">
+          <label class="booking-label">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Guests
+          </label>
+          <select name="guests" class="booking-select" id="bar-guests">
+            <option value="2">2 Guests (Couple / Studio)</option>
+            <option value="4">4 Guests</option>
+            <option value="6">6 - 7 Guests (Meraki Condo)</option>
+            <option value="8">8 - 10 Guests (4BR Beach House)</option>
+            <option value="22">Up to 22 Guests (Entire Estate)</option>
+          </select>
+        </div>
+
+        <div class="booking-field">
+          <label class="booking-label">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Accommodation
+          </label>
+          <select name="room_type" class="booking-select" id="bar-room">
+            <option value="beach-house">4BR Beach House + The Pass</option>
+            <option value="meraki-condo">3BR Meraki Condo</option>
+            <option value="poolside-suite">1BR Poolside Suite</option>
+            <option value="entire-estate">Entire Azur Retreat (22 Guests)</option>
+          </select>
+        </div>
+
+        <button class="btn btn-terracotta open-booking-modal" style="height: 48px;">
+          Check Rates
+        </button>
+      </div>
+
+      <!-- Mobile Native Trigger -->
+      <div class="booking-bar-mobile-trigger open-booking-modal">
+        <div class="mobile-trigger-content">
+          <span class="mobile-trigger-title">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--accent-terracotta)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Plan Your Byron Stay
+          </span>
+          <span class="mobile-trigger-desc">Select dates • Guests • Room options</span>
+        </div>
+        <button class="mobile-trigger-btn">Book Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       OUR STORY & PROPERTY OVERVIEW (Faithful to About Copywriting)
+       ========================================================================== -->
+  <section class="section-story" id="story">
+    <div class="container">
+      <div class="story-header-grid">
+        <div class="story-col-title">
+          <span class="kicker">OUR STORY</span>
+          <h2>A Relaxed Coastal Retreat</h2>
+        </div>
+
+        <div class="story-col-text">
+          <p>
+            Azur Byron Bay is a boutique accommodation experience designed for those who value space, connection and the laid-back beauty of Byron Bay.
+          </p>
+          <p style="margin-top: 1rem;">
+            Just five minutes from the town centre and Main Beach, our thoughtfully curated beach houses and suites offer the perfect balance of relaxed luxury and home away from home comfort, with a subtle Balinese influence woven throughout.
+          </p>
+        </div>
+
+        <div class="story-col-pillars">
+          <span class="pillar-item">PEOPLE</span>
+          <span class="pillar-item">PLACES</span>
+          <span class="pillar-item">RELAXATION</span>
+          <span class="pillar-item">CONNECTION</span>
+          <div class="pillar-divider"></div>
+        </div>
+      </div>
+
+      <!-- 3 Columns: Thoughtful Interiors, Tropical Surrounds, Shared Spaces -->
+      <div class="story-cards-grid">
+        <div class="story-card">
+          <div class="story-card-img-wrap">
+            <img src="Home/Images/Accom Option - 3BR Meraki Condo.jpg" alt="Thoughtful Interiors at Azur Byron Bay" loading="lazy">
+          </div>
+          <h3 class="story-card-title">
+            <span>Thoughtful Interiors</span>
+            <span>→</span>
+          </h3>
+          <p class="story-card-desc">
+            Spacious, stylish and designed for togetherness with all the comforts of home.
+          </p>
+        </div>
+
+        <div class="story-card">
+          <div class="story-card-img-wrap">
+            <img src="Home/Images/Slider 1.jpg" alt="Tropical Surrounds at Azur Byron Bay" loading="lazy">
+          </div>
+          <h3 class="story-card-title">
+            <span>Tropical Surrounds</span>
+            <span>→</span>
+          </h3>
+          <p class="story-card-desc">
+            Lush gardens, a pool and hot tub create a serene place to unwind.
+          </p>
+        </div>
+
+        <div class="story-card">
+          <div class="story-card-img-wrap">
+            <img src="Home/Images/Slider 3.jpg" alt="Shared Spaces at Azur Byron Bay" loading="lazy">
+          </div>
+          <h3 class="story-card-title">
+            <span>Shared Spaces</span>
+            <span>→</span>
+          </h3>
+          <p class="story-card-desc">
+            Relax, reconnect and make lasting memories in beautiful surrounds.
+          </p>
+        </div>
+      </div>
+
+      <!-- Key Stats & Amenities Strip -->
+      <div class="amenities-strip">
+        <div class="amenity-stat-item">
+          <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/>
+          </svg>
+          <div class="stat-details">
+            <span class="stat-number">11</span>
+            <span class="stat-label">Bedrooms</span>
+          </div>
+        </div>
+
+        <div class="amenity-stat-item">
+          <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M12 2v10"/><path d="M8 8l4 4 4-4"/>
+          </svg>
+          <div class="stat-details">
+            <span class="stat-number">10</span>
+            <span class="stat-label">Baths</span>
+          </div>
+        </div>
+
+        <div class="amenity-stat-item">
+          <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+          <div class="stat-details">
+            <span class="stat-number">6</span>
+            <span class="stat-label">Cars</span>
+          </div>
+        </div>
+
+        <div class="amenity-stat-item">
+          <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M2 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>
+          </svg>
+          <div class="stat-details">
+            <span class="stat-number">Pool</span>
+            <span class="stat-label">& Hot Tub</span>
+          </div>
+        </div>
+
+        <div class="amenity-stat-item">
+          <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+          <div class="stat-details">
+            <span class="stat-number">Tropical</span>
+            <span class="stat-label">Gardens</span>
+          </div>
+        </div>
+
+        <div class="amenity-stat-item">
+          <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <div class="stat-details">
+            <span class="stat-number">Families</span>
+            <span class="stat-label">& Groups</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Explore the Estate / Property Layout -->
+      <div class="estate-layout-box">
+        <div class="estate-layout-grid">
+          <div class="estate-layout-text">
+            <span class="kicker">EXPLORE THE ESTATE</span>
+            <h3>Property Layout</h3>
+            <p>
+              Azur Byron Bay features a main house and a separate rear house, offering a total of 11 bedrooms, 10 bathrooms and space for up to 6 cars. The layout includes spacious living areas, a pool and hot tub, tropical gardens and versatile accommodation options — perfect for families, couples and group getaways.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <button class="btn btn-secondary open-floorplan-modal">
+                View Full Floor Plan →
+              </button>
+              <a href="about.html#floorplan" class="btn btn-text">
+                Explore Architectural Layout
+              </a>
+            </div>
+          </div>
+
+          <div class="estate-plan-preview open-floorplan-modal">
+            <img src="About/Floor plan to attach.jpeg" alt="Azur Byron Bay Architectural Property Layout" loading="lazy">
+            <div class="plan-overlay-hint">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              Click to view high-res floor plan
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ACCOMMODATION SHOWCASE
+       ========================================================================== -->
+  <section class="section-rooms" id="rooms">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="kicker">CONSIDERED LIVING</span>
+        <h2>Our Boutique Accommodation</h2>
+        <p>
+          From a private four-bedroom coastal beach house to a serene three-bedroom condo and poolside suites, Azur offers versatile spaces crafted for effortless living.
+        </p>
+      </div>
+
+      <div class="room-cards-stack">
+        <!-- Room 1: 4BR Beach House + The Pass -->
+        <article class="room-card-horizontal">
+          <div class="room-card-media">
+            <span class="room-badge">Flagship Residence • 4 Bedrooms</span>
+            <img src="Home/Images/Accom Option - 4BR Beach House.jpg" alt="4BR Beach House at Azur Byron Bay" loading="lazy">
+            <button class="room-video-trigger" data-video-src="Rooms/Images/4BR Beach House + The Pass/4BR Beach House + The Pass.mp4">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Watch Walkthrough
+            </button>
+          </div>
+
+          <div class="room-card-content">
+            <div>
+              <span class="room-subtitle">Self-Contained Luxury</span>
+              <h3 class="room-title">4BR Beach House + The Pass</h3>
+              <p class="room-desc">
+                An expansive, light-filled coastal home featuring four bedrooms, multiple living and dining spaces, front porch, entertaining veranda, master suite with terrace, and direct access to the tropical pool and grounds.
+              </p>
+
+              <div class="room-specs-list">
+                <div class="room-spec-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                  <span>Up to 10 Guests</span>
+                </div>
+                <div class="room-spec-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20"/></svg>
+                  <span>4 King Bedrooms</span>
+                </div>
+                <div class="room-spec-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/></svg>
+                  <span>4 Bathrooms</span>
+                </div>
+                <div class="room-spec-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                  <span>Full Gourmet Kitchen</span>
+                </div>
+                <div class="room-spec-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12c2-2 4-2 6 0s4 2 6 0"/></svg>
+                  <span>Pool & Spa Access</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="room-card-actions">
+              <button class="btn btn-terracotta open-booking-modal" data-room="4BR Beach House">
+                Book This House
+              </button>
+              <a href="rooms.html#beach-house" class="btn btn-secondary">
+                View Full Details
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Room 2: 3BR Meraki Condo (Reverse layout) -->
+        <article class="room-card-horizontal reverse">
+          <div class="room-card-media">
+            <span class="room-badge">Upper Level Retreat • 3 Bedrooms</span>
+            <img src="Home/Images/Accom Option - 3BR Meraki Condo.jpg" alt="3BR Meraki Condo at Azur Byron Bay" loading="lazy">
+            <button class="room-video-trigger" data-video-src="Rooms/Images/3BR Meraki/3BR Meraki Video.mp4">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Watch Walkthrough
+            </button>
+          </div>
+
+          <div class="room-card-content">
+            <div>
+              <span class="room-subtitle">Private & Sophisticated</span>
+              <h3 class="room-title">3BR Meraki Condo</h3>
+              <p class="room-desc">
+                Occupying the upper level of the rear house, Meraki Condo offers complete privacy, three spacious bedrooms with ensuites, a designer kitchen, expansive terrace for alfresco dining, and leafy tree-lined outlooks.
+              </p>
+
+              <div class="room-specs-list">
+                <div class="room-spec-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                  <span>Up to 7 Guests</span>
+                </div>
+                <div class="room-spec-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20"/></svg>
+                  <span>3 King Suites</span>
+                </div>
+                <div class="room-spec-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/></svg>
+                  <span>3 Bathrooms</span>
+                </div>
+                <div class="room-spec-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                  <span>Modern Kitchen</span>
+                </div>
+                <div class="room-spec-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+                  <span>Private Dining Terrace</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="room-card-actions">
+              <button class="btn btn-terracotta open-booking-modal" data-room="3BR Meraki Condo">
+                Book Meraki Condo
+              </button>
+              <a href="rooms.html#meraki-condo" class="btn btn-secondary">
+                View Full Details
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Room 3: 1BR Poolside Suites -->
+        <article class="room-card-horizontal">
+          <div class="room-card-media">
+            <span class="room-badge">Boutique Poolside • 1 Bedroom</span>
+            <img src="Home/Images/Accom Option - 1BR Pool Side.jpg" alt="1BR Pool Side Suites at Azur Byron Bay" loading="lazy">
+          </div>
+
+          <div class="room-card-content">
+            <div>
+              <span class="room-subtitle">Sea Breeze • Tallows • The Wreck • Wategos</span>
+              <h3 class="room-title">1BR Pool Side Suites</h3>
+              <p class="room-desc">
+                Four individually styled poolside sanctuaries opening straight onto sunlit timber terraces, the central swimming pool, heated hot tub, and tropical gardens. Designed specifically for romantic getaways and couples.
+              </p>
+
+              <div class="room-specs-list">
+                <div class="room-spec-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                  <span>2 Guests</span>
+                </div>
+                <div class="room-spec-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20"/></svg>
+                  <span>1 Luxury King Bed</span>
+                </div>
+                <div class="room-spec-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/></svg>
+                  <span>Private Ensuite</span>
+                </div>
+                <div class="room-spec-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12c2-2 4-2 6 0s4 2 6 0"/></svg>
+                  <span>Direct Pool Terrace</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="room-card-actions">
+              <button class="btn btn-terracotta open-booking-modal" data-room="1BR Pool Side Suite">
+                Book Poolside Suite
+              </button>
+              <a href="rooms.html#poolside-suites" class="btn btn-secondary">
+                View Full Details
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CINEMATIC VIDEO TOUR BANNER
+       ========================================================================== -->
+  <section class="section-cinematic">
+    <img src="Home/Images/Slider 2.jpg" alt="Azur Byron Bay property video tour" class="cinematic-bg-img" loading="lazy">
+    <div class="cinematic-content">
+      <button class="play-pulse-btn" data-video-src="Home/Entire Property Video.mp4" aria-label="Play full property video">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="5 3 19 12 5 21 5 3"/>
+        </svg>
+      </button>
+      <span class="kicker kicker-light">IMMERSIVE WALKTHROUGH</span>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.2; margin-bottom: 1rem;">
+        Experience Azur Byron Bay
+      </h2>
+      <p style="font-size: 1.0625rem; color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto;">
+        Take a virtual stroll through our sun-drenched gardens, sparkling pool, poolside pavilions, and tranquil interior sanctuaries.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       GROUP BOOKINGS FEATURETTE (Faithful to Group Bookings Copywriting)
+       ========================================================================== -->
+  <section class="section-group-banner" id="group-bookings">
+    <div class="container">
+      <div class="group-banner-box">
+        <div class="group-banner-content">
+          <span class="kicker">GROUP BOOKINGS</span>
+          <h2>Your Private Byron Bay Retreat</h2>
+          <p class="group-tagline">Gather. Celebrate. Stay together.</p>
+          <p>
+            For milestone birthdays, family getaways, intimate celebrations or weekends away with friends, Azur Byron Bay offers a relaxed and private setting for bringing your favourite people together.
+          </p>
+          <p>
+            With exclusive use of the property, Azur can accommodate <strong>up to 22 guests</strong>, giving your group the freedom to settle in, slow down and enjoy Byron Bay entirely at your own pace.
+          </p>
+
+          <div class="group-pills-wrap">
+            <span class="group-pill">Milestone celebrations</span>
+            <span class="group-pill">Birthdays</span>
+            <span class="group-pill">Family gatherings</span>
+            <span class="group-pill">Friends' getaways</span>
+            <span class="group-pill">Reunions</span>
+            <span class="group-pill">Pre-wedding stays</span>
+            <span class="group-pill">Small retreats</span>
+          </div>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="group-bookings.html" class="btn btn-terracotta">
+              Learn About Group Bookings
+            </a>
+            <button class="btn btn-outline-white open-booking-modal" data-room="Entire Estate">
+              Inquire For 22 Guests
+            </button>
+          </div>
+        </div>
+
+        <div class="group-banner-img">
+          <img src="Home/Images/Slider 4.jpg" alt="Azur Byron Bay private group retreat" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       INSTAGRAM & BYRON BAY LIFESTYLE GRID
+       ========================================================================== -->
+  <section class="section-lifestyle">
+    <div class="container">
+      <div class="section-header-center" style="margin-bottom: 2rem;">
+        <span class="kicker">@AZURBYRONBAY</span>
+        <h2>Stay Close to Everything. Feel Away from It All.</h2>
+        <p>A glimpse into slow mornings, afternoon dips, and coastal living at 44 Shirley Street.</p>
+      </div>
+
+      <div class="insta-grid">
+        <div class="insta-item">
+          <img src="Rooms/Images/1BR Sea Breeze, Tallows, The Wreck, Wategos/IMG_4196.jpg" alt="Poolside retreat" loading="lazy">
+          <div class="insta-overlay">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+        </div>
+        <div class="insta-item">
+          <img src="Rooms/Images/3BR Meraki/IMG_4507.jpg" alt="Meraki bedroom" loading="lazy">
+          <div class="insta-overlay">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+        </div>
+        <div class="insta-item">
+          <img src="Home/Images/Slider 5.jpg" alt="Balinese gate" loading="lazy">
+          <div class="insta-overlay">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+        </div>
+        <div class="insta-item">
+          <img src="Rooms/Images/1BR Sea Breeze, Tallows, The Wreck, Wategos/IMG_4267.jpg" alt="Bath sanctuary" loading="lazy">
+          <div class="insta-overlay">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+        </div>
+        <div class="insta-item">
+          <img src="Rooms/Images/3BR Meraki/IMG_4561.jpg" alt="Kitchen living" loading="lazy">
+          <div class="insta-overlay">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SITE FOOTER (Aloha Byron Bay Signature Earth Tone Footer)
+       ========================================================================== -->
+  <footer class="site-footer-aloha">
+    <div class="container">
+      <div class="footer-aloha-container">
+        <form class="footer-aloha-form" onsubmit="event.preventDefault(); window.azurToast && window.azurToast('Thank you for subscribing to Azur Byron Bay.');">
+          <input type="text" placeholder="NAME" class="aloha-subscribe-input" aria-label="Your Name" required>
+          <input type="email" placeholder="EMAIL" class="aloha-subscribe-input" aria-label="Your Email" required>
+          <button type="submit" class="btn-aloha-subscribe">SUBSCRIBE</button>
+        </form>
+
+        <ul class="footer-aloha-links">
+          <li><a href="#" class="footer-aloha-link">TERMS & CONDITIONS</a></li>
+          <li><a href="#" class="footer-aloha-link">PRIVACY POLICY</a></li>
+          <li><a href="contact.html" class="footer-aloha-link">CONTACT</a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener" class="footer-aloha-link">INSTAGRAM</a></li>
+          <li><a href="https://facebook.com" target="_blank" rel="noopener" class="footer-aloha-link">FACEBOOK</a></li>
+          <li><a href="https://pinterest.com" target="_blank" rel="noopener" class="footer-aloha-link">PINTEREST</a></li>
+        </ul>
+
+        <p class="footer-aloha-credits">
+          44 Shirley Street, Byron Bay NSW 2481, Australia • Concierge: <a href="tel:+61266857500" style="color: inherit; text-decoration: underline;">(02) 6685 7500</a> • <a href="mailto:stay@azurbyronbay.com.au" style="color: inherit; text-decoration: underline;">stay@azurbyronbay.com.au</a><br>
+          Just 5 minutes walk to Byron Town Centre & Main Beach.<br>
+          <span style="display: block; margin-top: 0.75rem; opacity: 0.8; font-size: 0.75rem;">
+            Azur Byron Bay acknowledges the Arakwal people of the Bundjalung Nation, the traditional custodians of this land.
+          </span>
+          © <span id="year">2026</span> Azur Byron Bay. All Rights Reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MOBILE APP BOTTOM DOCK (FIXED NATIVE APP NAVIGATION)
+       ========================================================================== -->
+  <nav class="mobile-app-bottom-bar" aria-label="Mobile Bottom App Bar">
+    <a href="index.html" class="app-dock-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <span class="app-dock-label">Home</span>
+    </a>
+    <a href="rooms.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></svg>
+      <span class="app-dock-label">Rooms</span>
+    </a>
+    <button class="app-dock-book-btn open-booking-modal" aria-label="Open booking sheet">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>Book</span>
+    </button>
+    <a href="about.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      <span class="app-dock-label">Layout</span>
+    </a>
+    <a href="gallery.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span class="app-dock-label">Gallery</span>
+    </a>
+  </nav>
+
+  <!-- ==========================================================================
+       SLIDE-UP BOTTOM SHEET (BOOKING & INQUIRY)
+       ========================================================================== -->
+  <div class="bottom-sheet-backdrop"></div>
+  <div class="bottom-sheet-modal" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="sheet-drag-handle-bar">
+      <div class="sheet-drag-handle"></div>
+    </div>
+    <div class="sheet-header">
+      <h3 class="sheet-title" id="sheet-title">Check Availability</h3>
+      <button class="sheet-close-btn" aria-label="Close booking sheet">✕</button>
+    </div>
+
+    <form class="sheet-body inquiry-form">
+      <div class="app-form-group">
+        <label class="app-form-label">Accommodation Type</label>
+        <select class="app-form-select" id="sheet-room-select" name="room_type">
+          <option value="beach-house">4BR Beach House + The Pass (Up to 10)</option>
+          <option value="meraki-condo">3BR Meraki Condo (Up to 7)</option>
+          <option value="poolside-suite">1BR Poolside Suite (Couples)</option>
+          <option value="entire-estate">Entire Azur Retreat (Up to 22)</option>
+        </select>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+        <div class="app-form-group">
+          <label class="app-form-label">Check In</label>
+          <input type="date" class="app-form-input" id="sheet-checkin" name="checkin" required>
+        </div>
+        <div class="app-form-group">
+          <label class="app-form-label">Check Out</label>
+          <input type="date" class="app-form-input" id="sheet-checkout" name="checkout" required>
+        </div>
+      </div>
+
+      <div class="app-form-group">
+        <label class="app-form-label">Guests</label>
+        <div class="guest-stepper-wrap" data-min="1" data-max="22">
+          <button type="button" class="stepper-btn stepper-dec">−</button>
+          <span class="stepper-value">2</span>
+          <button type="button" class="stepper-btn stepper-inc">+</button>
+          <input type="hidden" name="guests_count" value="2">
+        </div>
+      </div>
+
+      <div class="app-form-group">
+        <label class="app-form-label">Your Name</label>
+        <input type="text" class="app-form-input" placeholder="Full name" required>
+      </div>
+
+      <div class="app-form-group">
+        <label class="app-form-label">Email or Phone</label>
+        <input type="text" class="app-form-input" placeholder="you@domain.com or phone" required>
+      </div>
+
+      <!-- Live summary box -->
+      <div class="sheet-summary-box">
+        <div class="summary-row">
+          <span>Duration:</span>
+          <span class="sum-nights">3 Nights</span>
+        </div>
+        <div class="summary-row">
+          <span>Guide Rate:</span>
+          <span class="sum-rate">$1,250 AUD / night</span>
+        </div>
+        <div class="summary-row total">
+          <span>Estimated Total:</span>
+          <span class="sum-total">$3,750 AUD</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-terracotta" style="width: 100%; padding: 1rem;">
+        Send Reservation Inquiry
+      </button>
+
+      <p style="font-size: 0.75rem; text-align: center; color: var(--text-secondary);">
+        Direct booking guarantee • Best rates direct • Azur Byron Bay Concierge
+      </p>
+    </form>
+  </div>
+
+  <!-- ==========================================================================
+       CINEMATIC VIDEO MODAL
+       ========================================================================== -->
+  <div class="site-modal" id="video-modal" role="dialog" aria-modal="true" aria-label="Video Player">
+    <div class="modal-container video-modal-container">
+      <button class="modal-close-btn" id="video-modal-close" aria-label="Close video">✕</button>
+      <video id="video-modal-player" class="video-modal-player" controls playsinline>
+        <source src="" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FLOOR PLAN MODAL LIGHTBOX
+       ========================================================================== -->
+  <div class="site-modal" id="floorplan-modal" role="dialog" aria-modal="true" aria-label="Floor Plan Lightbox">
+    <div class="modal-container plan-modal-container">
+      <button class="modal-close-btn" id="floorplan-modal-close" aria-label="Close floor plan">✕</button>
+      <div class="plan-modal-header">
+        <span class="kicker">ESTATE ARCHITECTURE</span>
+        <h3 style="font-family: var(--font-serif); font-size: 2rem;">Azur Byron Bay — Complete Property Layout</h3>
+        <p style="font-size: 0.875rem; color: var(--text-secondary);">
+          44 Shirley Street, Byron Bay • 11 Bedrooms • 10 Baths • 6 Cars • Int: 410 sqm • Ext: 121 sqm • Total: 531 sqm
+        </p>
+      </div>
+      <div class="plan-modal-body">
+        <img src="About/Floor plan to attach.jpeg" alt="Azur Byron Bay Complete Floor Plan" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/booking.js"></script>
+</body>
+</html>
+

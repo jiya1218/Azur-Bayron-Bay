@@ -1,0 +1,528 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Contact & Location | Azur Byron Bay</title>
+  <meta name="description" content="Get in touch with Azur Byron Bay. 44 Shirley Street, Byron Bay NSW 2481. Phone: (02) 6685 7500. Five-minute walk to Main Beach and town.">
+  <link rel="icon" type="image/png" href="Logo/azur.png">
+
+  <!-- Core & Mobile App CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile-app.css">
+  <style>
+    .page-hero {
+      padding: 10rem 0 4rem;
+      background: linear-gradient(rgba(26, 28, 30, 0.5), rgba(26, 28, 30, 0.7)), url('Home/Images/Slider 1.jpg') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+    }
+    .contact-layout-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 4rem;
+      margin: 4.5rem 0 5rem;
+      align-items: start;
+    }
+    .contact-info-panel {
+      background: #fff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 3rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .contact-card-item {
+      display: flex;
+      gap: 1.25rem;
+    }
+    .contact-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-full);
+      background: var(--accent-terracotta-light);
+      color: var(--accent-terracotta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon-box svg {
+      width: 22px;
+      height: 22px;
+    }
+    .contact-card-item h4 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+    }
+    .contact-card-item p {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .contact-form-panel {
+      background: #fff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 3.5rem;
+      box-shadow: var(--shadow-md);
+    }
+    /* FAQ Accordion */
+    .faq-section {
+      margin: 5rem 0;
+    }
+    .faq-item {
+      background: #fff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 1.25rem 1.75rem;
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+    .faq-answer {
+      padding: 0 1.75rem 1.5rem;
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      display: none;
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-item.active .faq-question span {
+      transform: rotate(45deg);
+    }
+    .faq-question span {
+      transition: transform 0.2s ease;
+      font-size: 1.5rem;
+      color: var(--accent-terracotta);
+    }
+    @media (max-width: 992px) {
+      .contact-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .contact-form-panel, .contact-info-panel {
+        padding: 2rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .page-hero {
+        padding: 7rem 0 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+       SITE HEADER / NAVBAR (Aloha Byron Bay Style)
+       ========================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container container-wide">
+      <div class="header-inner">
+        <!-- Brand Logo -->
+        <a href="index.html" class="header-brand" aria-label="Azur Byron Bay Homepage">
+          <img src="Logo/AZUR BLACK CLEAR.png" alt="Azur Byron Bay" class="header-logo">
+        </a>
+
+        <!-- Desktop Navigation & Action -->
+        <div class="header-nav-wrap">
+          <nav class="desktop-nav" aria-label="Main Navigation">
+            <ul class="nav-links">
+              <li><a href="index.html" class="nav-link">Home</a></li>
+              <li><a href="about.html" class="nav-link">About</a></li>
+              <li><a href="explore.html" class="nav-link">Explore</a></li>
+              <li><a href="rooms.html" class="nav-link">Rooms</a></li>
+              <li><a href="group-bookings.html" class="nav-link">Group Bookings</a></li>
+              <li><a href="contact.html" class="nav-link active">Contact</a></li>
+              <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+              <li><a href="blog.html" class="nav-link">Blog</a></li>
+            </ul>
+          </nav>
+
+          <button class="btn-book-top open-booking-modal" aria-label="Book your stay">
+            BOOK NOW
+          </button>
+
+          <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">
+            <div class="hamburger-icon">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="drawer-overlay"></div>
+  <aside class="mobile-drawer" aria-label="Mobile Navigation Menu">
+    <div>
+      <div style="margin-bottom: 2rem;">
+        <img src="Logo/AZUR BLACK CLEAR.png" alt="Azur Byron Bay" style="height: 44px;">
+      </div>
+      <ul class="drawer-links">
+        <li><a href="index.html" class="drawer-link">Home <span>→</span></a></li>
+        <li><a href="about.html" class="drawer-link">About <span>→</span></a></li>
+        <li><a href="explore.html" class="drawer-link">Explore <span>→</span></a></li>
+        <li><a href="rooms.html" class="drawer-link">Rooms <span>→</span></a></li>
+        <li><a href="group-bookings.html" class="drawer-link">Group Bookings <span>→</span></a></li>
+        <li><a href="contact.html" class="drawer-link active">Contact <span>→</span></a></li>
+        <li><a href="gallery.html" class="drawer-link">Gallery <span>→</span></a></li>
+        <li><a href="blog.html" class="drawer-link">Blog <span>→</span></a></li>
+      </ul>
+    </div>
+
+    <div class="drawer-footer">
+      <button class="btn-book-top open-booking-modal" style="width: 100%; text-align: center; justify-content: center; padding: 1rem;">
+        BOOK NOW
+      </button>
+      <a href="tel:+61266857500" class="drawer-contact-item">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>(02) 6685 7500</span>
+      </a>
+      <div class="drawer-contact-item">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>44 Shirley Street, Byron Bay NSW</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       PAGE HERO
+       ========================================================================== -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker kicker-light">REACH OUT</span>
+      <h1 class="heading-1">Contact Azur Byron Bay</h1>
+      <p style="max-width: 600px; margin: 1rem auto 0; font-size: 1.125rem; color: rgba(255,255,255,0.92);">
+        We are here to assist with reservations, group bookings, and local recommendations.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CONTACT FORM & DETAILS
+       ========================================================================== -->
+  <main class="container">
+    <div class="contact-layout-grid">
+      <!-- Left: Contact Information -->
+      <div class="contact-info-panel">
+        <div>
+          <span class="kicker">LOCATION & REACH</span>
+          <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 0.75rem;">Get In Touch</h2>
+          <p style="color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7;">
+            Whether you are booking a couple's weekend away or planning an exclusive retreat for up to 22 guests, our Byron team is delighted to help.
+          </p>
+        </div>
+
+        <div class="contact-card-item">
+          <div class="contact-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Physical Address</h4>
+            <p>44 Shirley Street<br>Byron Bay, NSW 2481, Australia</p>
+            <p style="font-size: 0.8125rem; color: var(--accent-terracotta); font-weight: 600; margin-top: 0.35rem;">
+              5 minute walk to town & Main Beach
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-card-item">
+          <div class="contact-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <h4>Telephone</h4>
+            <p><a href="tel:+61266857500" style="color: var(--text-primary); font-weight: 600;">(02) 6685 7500</a></p>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary);">Daily: 8:00 AM – 7:00 PM AEST</p>
+          </div>
+        </div>
+
+        <div class="contact-card-item">
+          <div class="contact-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <h4>Email Inquiries</h4>
+            <p><a href="mailto:stay@azurbyronbay.com.au" style="color: var(--text-primary); font-weight: 600;">stay@azurbyronbay.com.au</a></p>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary);">Fast response within 2–4 hours</p>
+          </div>
+        </div>
+
+        <!-- Getting Here Quick Info -->
+        <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--radius-sm);">
+          <h5 style="font-weight: 700; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; color: var(--text-primary);">
+            Getting Here
+          </h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.8125rem; color: var(--text-secondary);">
+            <li>• Ballina Byron Airport (BNK): 25 mins by shuttle / car</li>
+            <li>• Gold Coast Airport (OOL): 45 mins south via M1</li>
+            <li>• Secure on-site parking for up to 6 guest vehicles</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right: Direct Inquiry Form -->
+      <div class="contact-form-panel">
+        <span class="kicker">ONLINE INQUIRY</span>
+        <h2 style="font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 0.75rem;">Send a Message</h2>
+        <p style="color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: 2rem;">
+          Complete the form below and our reservations concierge will confirm availability and provide our best direct rate.
+        </p>
+
+        <form class="contact-page-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="app-form-group">
+              <label class="app-form-label">Full Name *</label>
+              <input type="text" class="app-form-input" placeholder="Sarah Jenkins" required>
+            </div>
+            <div class="app-form-group">
+              <label class="app-form-label">Email Address *</label>
+              <input type="email" class="app-form-input" placeholder="sarah@example.com" required>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="app-form-group">
+              <label class="app-form-label">Phone Number *</label>
+              <input type="tel" class="app-form-input" placeholder="+61 400 000 000" required>
+            </div>
+            <div class="app-form-group">
+              <label class="app-form-label">Preferred Accommodation</label>
+              <select class="app-form-select">
+                <option value="any">General Inquiry / Open</option>
+                <option value="beach-house">4BR Beach House + The Pass</option>
+                <option value="meraki-condo">3BR Meraki Condo</option>
+                <option value="poolside-suite">1BR Poolside Suite</option>
+                <option value="entire-estate">Entire Azur Retreat (Up to 22 Guests)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="app-form-group">
+              <label class="app-form-label">Check-In Date</label>
+              <input type="date" class="app-form-input">
+            </div>
+            <div class="app-form-group">
+              <label class="app-form-label">Check-Out Date</label>
+              <input type="date" class="app-form-input">
+            </div>
+          </div>
+
+          <div class="app-form-group">
+            <label class="app-form-label">Message or Special Request</label>
+            <textarea class="app-form-input" rows="4" placeholder="Tell us about your trip, group requirements, or questions..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-terracotta" style="padding: 1rem; margin-top: 0.5rem;">
+            Send Inquiry to Concierge
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+      <div class="section-header-center">
+        <span class="kicker">HELPFUL DETAILS</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>Key information regarding check-in, parking, pool hours, and staying with us.</p>
+      </div>
+
+      <div style="max-width: 860px; margin: 0 auto;">
+        <div class="faq-item active">
+          <div class="faq-question">
+            What are the check-in and check-out times?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            Check-in is from 2:00 PM and check-out is by 10:00 AM. Early check-in or late check-out may be arranged subject to availability with advance notice.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Is parking provided on site?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            Yes, Azur Byron Bay has private, off-street parking bays for up to 6 vehicles with easy access via Shirley Lane.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            How close is Azur to the beach and town centre?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            Azur is situated at 44 Shirley Street, a gentle five-minute flat walk (approx. 400m) to Byron Bay's town center, shops, supermarkets, and Main Beach. You will not need a car once you arrive!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Can we book the entire property exclusively?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            Yes! Azur Byron Bay specializes in whole-estate group bookings accommodating up to 22 guests across 11 bedrooms and 10 bathrooms with exclusive access to the swimming pool, heated hot tub, and tropical entertaining areas.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            What are the swimming pool and hot tub hours?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            The swimming pool and heated spa are open daily from 7:00 AM to 9:00 PM for all in-house guests.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <!-- ==========================================================================
+       SITE FOOTER (Aloha Byron Bay Signature Earth Tone Footer)
+       ========================================================================== -->
+  <footer class="site-footer-aloha">
+    <div class="container">
+      <div class="footer-aloha-container">
+        <form class="footer-aloha-form" onsubmit="event.preventDefault(); window.azurToast && window.azurToast('Thank you for subscribing to Azur Byron Bay.');">
+          <input type="text" placeholder="NAME" class="aloha-subscribe-input" aria-label="Your Name" required>
+          <input type="email" placeholder="EMAIL" class="aloha-subscribe-input" aria-label="Your Email" required>
+          <button type="submit" class="btn-aloha-subscribe">SUBSCRIBE</button>
+        </form>
+
+        <ul class="footer-aloha-links">
+          <li><a href="#" class="footer-aloha-link">TERMS & CONDITIONS</a></li>
+          <li><a href="#" class="footer-aloha-link">PRIVACY POLICY</a></li>
+          <li><a href="contact.html" class="footer-aloha-link">CONTACT</a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener" class="footer-aloha-link">INSTAGRAM</a></li>
+          <li><a href="https://facebook.com" target="_blank" rel="noopener" class="footer-aloha-link">FACEBOOK</a></li>
+          <li><a href="https://pinterest.com" target="_blank" rel="noopener" class="footer-aloha-link">PINTEREST</a></li>
+        </ul>
+
+        <p class="footer-aloha-credits">
+          44 Shirley Street, Byron Bay NSW 2481, Australia • Concierge: <a href="tel:+61266857500" style="color: inherit; text-decoration: underline;">(02) 6685 7500</a> • <a href="mailto:stay@azurbyronbay.com.au" style="color: inherit; text-decoration: underline;">stay@azurbyronbay.com.au</a><br>
+          Just 5 minutes walk to Byron Town Centre & Main Beach.<br>
+          <span style="display: block; margin-top: 0.75rem; opacity: 0.8; font-size: 0.75rem;">
+            Azur Byron Bay acknowledges the Arakwal people of the Bundjalung Nation, the traditional custodians of this land.
+          </span>
+          © <span id="year">2026</span> Azur Byron Bay. All Rights Reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MOBILE APP BOTTOM DOCK
+       ========================================================================== -->
+  <nav class="mobile-app-bottom-bar" aria-label="Mobile Bottom App Bar">
+    <a href="index.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <span class="app-dock-label">Home</span>
+    </a>
+    <a href="rooms.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></svg>
+      <span class="app-dock-label">Rooms</span>
+    </a>
+    <button class="app-dock-book-btn open-booking-modal" aria-label="Open booking sheet">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>Book</span>
+    </button>
+    <a href="about.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      <span class="app-dock-label">Layout</span>
+    </a>
+    <a href="gallery.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span class="app-dock-label">Gallery</span>
+    </a>
+  </nav>
+
+  <!-- Slide-up Bottom Sheet Modal -->
+  <div class="bottom-sheet-backdrop"></div>
+  <div class="bottom-sheet-modal" role="dialog" aria-modal="true">
+    <div class="sheet-drag-handle-bar"><div class="sheet-drag-handle"></div></div>
+    <div class="sheet-header">
+      <h3 class="sheet-title">Check Availability</h3>
+      <button class="sheet-close-btn" aria-label="Close">✕</button>
+    </div>
+    <form class="sheet-body inquiry-form">
+      <div class="app-form-group">
+        <label class="app-form-label">Accommodation Type</label>
+        <select class="app-form-select" id="sheet-room-select" name="room_type">
+          <option value="beach-house">4BR Beach House + The Pass</option>
+          <option value="meraki-condo">3BR Meraki Condo</option>
+          <option value="poolside-suite">1BR Poolside Suite</option>
+          <option value="entire-estate">Entire Azur Estate (Up to 22)</option>
+        </select>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+        <div class="app-form-group">
+          <label class="app-form-label">Check In</label>
+          <input type="date" class="app-form-input" id="sheet-checkin" name="checkin" required>
+        </div>
+        <div class="app-form-group">
+          <label class="app-form-label">Check Out</label>
+          <input type="date" class="app-form-input" id="sheet-checkout" name="checkout" required>
+        </div>
+      </div>
+      <div class="app-form-group">
+        <label class="app-form-label">Guests</label>
+        <div class="guest-stepper-wrap" data-min="1" data-max="22">
+          <button type="button" class="stepper-btn stepper-dec">−</button>
+          <span class="stepper-value">2</span>
+          <button type="button" class="stepper-btn stepper-inc">+</button>
+          <input type="hidden" name="guests_count" value="2">
+        </div>
+      </div>
+      <div class="app-form-group">
+        <label class="app-form-label">Your Name</label>
+        <input type="text" class="app-form-input" placeholder="Full name" required>
+      </div>
+      <div class="app-form-group">
+        <label class="app-form-label">Email or Phone</label>
+        <input type="text" class="app-form-input" placeholder="you@domain.com or phone" required>
+      </div>
+      <button type="submit" class="btn btn-terracotta" style="width: 100%; padding: 1rem;">Send Reservation Inquiry</button>
+    </form>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/booking.js"></script>
+  <script>
+    // FAQ accordion toggle
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
+

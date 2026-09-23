@@ -1,0 +1,559 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Photo Gallery | Azur Byron Bay</title>
+  <meta name="description" content="Explore our visual gallery: sunlit swimming pool, Balinese garden pavilions, luxury suites, and beach house living at Azur Byron Bay.">
+  <link rel="icon" type="image/png" href="Logo/azur.png">
+
+  <!-- Core & Mobile App CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile-app.css">
+  <style>
+    .page-hero {
+      padding: 10rem 0 4rem;
+      background: linear-gradient(rgba(26, 28, 30, 0.5), rgba(26, 28, 30, 0.7)), url('Home/Images/Slider 2.jpg') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+    }
+    .gallery-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .gallery-filter-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      padding: 0.6rem 1.35rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .gallery-filter-btn:hover, .gallery-filter-btn.active {
+      background: var(--text-primary);
+      color: #fff;
+      border-color: var(--text-primary);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      box-shadow: var(--shadow-sm);
+      background: #eee;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .gallery-item-trigger {
+      display: block;
+      width: 100%;
+      height: 100%;
+      cursor: zoom-in;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+    .gallery-caption-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(15, 17, 19, 0.75) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.25rem;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .gallery-caption-overlay {
+      opacity: 1;
+    }
+    .gallery-caption-title {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      line-height: 1.2;
+    }
+    .gallery-caption-cat {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-gold);
+    }
+
+    /* Lightbox */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 14, 16, 0.94);
+      backdrop-filter: blur(10px);
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .lightbox-modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .lightbox-content {
+      max-width: 90vw;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-xl);
+      transition: opacity 0.2s ease;
+    }
+    .lightbox-info {
+      color: #fff;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .lightbox-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.45);
+    }
+    .lightbox-prev { left: -64px; }
+    .lightbox-next { right: -64px; }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.85rem;
+      }
+      .lightbox-prev { left: 10px; }
+      .lightbox-next { right: 10px; }
+      .page-hero {
+        padding: 7rem 0 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+       SITE HEADER / NAVBAR (Aloha Byron Bay Style)
+       ========================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container container-wide">
+      <div class="header-inner">
+        <!-- Brand Logo -->
+        <a href="index.html" class="header-brand" aria-label="Azur Byron Bay Homepage">
+          <img src="Logo/AZUR BLACK CLEAR.png" alt="Azur Byron Bay" class="header-logo">
+        </a>
+
+        <!-- Desktop Navigation & Action -->
+        <div class="header-nav-wrap">
+          <nav class="desktop-nav" aria-label="Main Navigation">
+            <ul class="nav-links">
+              <li><a href="index.html" class="nav-link">Home</a></li>
+              <li><a href="about.html" class="nav-link">About</a></li>
+              <li><a href="explore.html" class="nav-link">Explore</a></li>
+              <li><a href="rooms.html" class="nav-link">Rooms</a></li>
+              <li><a href="group-bookings.html" class="nav-link">Group Bookings</a></li>
+              <li><a href="contact.html" class="nav-link">Contact</a></li>
+              <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+              <li><a href="blog.html" class="nav-link">Blog</a></li>
+            </ul>
+          </nav>
+
+          <button class="btn-book-top open-booking-modal" aria-label="Book your stay">
+            BOOK NOW
+          </button>
+
+          <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">
+            <div class="hamburger-icon">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="drawer-overlay"></div>
+  <aside class="mobile-drawer" aria-label="Mobile Navigation Menu">
+    <div>
+      <div style="margin-bottom: 2rem;">
+        <img src="Logo/AZUR BLACK CLEAR.png" alt="Azur Byron Bay" style="height: 44px;">
+      </div>
+      <ul class="drawer-links">
+        <li><a href="index.html" class="drawer-link">Home <span>→</span></a></li>
+        <li><a href="about.html" class="drawer-link">About <span>→</span></a></li>
+        <li><a href="explore.html" class="drawer-link">Explore <span>→</span></a></li>
+        <li><a href="rooms.html" class="drawer-link">Rooms <span>→</span></a></li>
+        <li><a href="group-bookings.html" class="drawer-link">Group Bookings <span>→</span></a></li>
+        <li><a href="contact.html" class="drawer-link">Contact <span>→</span></a></li>
+        <li><a href="gallery.html" class="drawer-link active">Gallery <span>→</span></a></li>
+        <li><a href="blog.html" class="drawer-link">Blog <span>→</span></a></li>
+      </ul>
+    </div>
+
+    <div class="drawer-footer">
+      <button class="btn-book-top open-booking-modal" style="width: 100%; text-align: center; justify-content: center; padding: 1rem;">
+        BOOK NOW
+      </button>
+      <a href="tel:+61266857500" class="drawer-contact-item">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>(02) 6685 7500</span>
+      </a>
+      <div class="drawer-contact-item">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>44 Shirley Street, Byron Bay NSW</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       PAGE HERO
+       ========================================================================== -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker kicker-light">VISUAL RETREAT</span>
+      <h1 class="heading-1">Azur Byron Bay Gallery</h1>
+      <p style="max-width: 600px; margin: 1rem auto 0; font-size: 1.125rem; color: rgba(255,255,255,0.92);">
+        Lush Balinese gardens, turquoise waters, and coastal design in the heart of Byron Bay.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       GALLERY FILTERS & GRID
+       ========================================================================== -->
+  <main class="container">
+    <div class="gallery-filter-bar">
+      <button class="gallery-filter-btn active" data-filter="all">All Photos</button>
+      <button class="gallery-filter-btn" data-filter="pool-grounds">Pool & Grounds</button>
+      <button class="gallery-filter-btn" data-filter="beach-house">4BR Beach House</button>
+      <button class="gallery-filter-btn" data-filter="meraki">3BR Meraki Condo</button>
+      <button class="gallery-filter-btn" data-filter="poolside">1BR Poolside Suites</button>
+      <button class="gallery-filter-btn" data-filter="balinese">Balinese Touches</button>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- Item 1: Pool & Spa -->
+      <div class="gallery-item" data-category="pool-grounds">
+        <a href="#" class="gallery-item-trigger" data-full-src="Home/Images/Slider 1.jpg" data-title="Tropical Pool & Heated Hot Tub">
+          <img src="Home/Images/Slider 1.jpg" alt="Pool & Hot Tub at Azur" loading="lazy">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-cat">Pool & Grounds</span>
+            <h4 class="gallery-caption-title">Tropical Pool & Heated Hot Tub</h4>
+          </div>
+        </a>
+      </div>
+
+      <!-- Item 2: Meraki Condo Main -->
+      <div class="gallery-item" data-category="meraki">
+        <a href="#" class="gallery-item-trigger" data-full-src="Home/Images/Accom Option - 3BR Meraki Condo.jpg" data-title="3BR Meraki Condo Living Space">
+          <img src="Home/Images/Accom Option - 3BR Meraki Condo.jpg" alt="Meraki Living Room" loading="lazy">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-cat">3BR Meraki Condo</span>
+            <h4 class="gallery-caption-title">3BR Meraki Condo Living Space</h4>
+          </div>
+        </a>
+      </div>
+
+      <!-- Item 3: Balinese Carved Doors -->
+      <div class="gallery-item" data-category="balinese pool-grounds">
+        <a href="#" class="gallery-item-trigger" data-full-src="Home/Images/Slider 3.jpg" data-title="Hand-Carved Balinese Temple Gates">
+          <img src="Home/Images/Slider 3.jpg" alt="Balinese Gates" loading="lazy">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-cat">Balinese Touches</span>
+            <h4 class="gallery-caption-title">Hand-Carved Balinese Temple Gates</h4>
+          </div>
+        </a>
+      </div>
+
+      <!-- Item 4: Beach House Exterior/Deck -->
+      <div class="gallery-item" data-category="beach-house">
+        <a href="#" class="gallery-item-trigger" data-full-src="Home/Images/Accom Option - 4BR Beach House.jpg" data-title="4BR Beach House Veranda & Porch">
+          <img src="Home/Images/Accom Option - 4BR Beach House.jpg" alt="4BR Beach House" loading="lazy">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-cat">4BR Beach House</span>
+            <h4 class="gallery-caption-title">4BR Beach House Veranda & Porch</h4>
+          </div>
+        </a>
+      </div>
+
+      <!-- Item 5: Poolside Suite Deck -->
+      <div class="gallery-item" data-category="poolside pool-grounds">
+        <a href="#" class="gallery-item-trigger" data-full-src="Rooms/Images/1BR Sea Breeze, Tallows, The Wreck, Wategos/IMG_4196.jpg" data-title="Poolside Terrace & Sun Loungers">
+          <img src="Rooms/Images/1BR Sea Breeze, Tallows, The Wreck, Wategos/IMG_4196.jpg" alt="Poolside Deck" loading="lazy">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-cat">1BR Poolside Suites</span>
+            <h4 class="gallery-caption-title">Poolside Terrace & Sun Loungers</h4>
+          </div>
+        </a>
+      </div>
+
+      <!-- Item 6: Meraki Bedroom -->
+      <div class="gallery-item" data-category="meraki">
+        <a href="#" class="gallery-item-trigger" data-full-src="Rooms/Images/3BR Meraki/IMG_4507.jpg" data-title="Meraki Suite King Bedroom">
+          <img src="Rooms/Images/3BR Meraki/IMG_4507.jpg" alt="Meraki Bedroom" loading="lazy">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-cat">3BR Meraki Condo</span>
+            <h4 class="gallery-caption-title">Meraki Suite King Bedroom</h4>
+          </div>
+        </a>
+      </div>
+
+      <!-- Item 7: Poolside Suite King Bed -->
+      <div class="gallery-item" data-category="poolside">
+        <a href="#" class="gallery-item-trigger" data-full-src="Rooms/Images/1BR Sea Breeze, Tallows, The Wreck, Wategos/IMG_4249.jpg" data-title="Sea Breeze King Suite">
+          <img src="Rooms/Images/1BR Sea Breeze, Tallows, The Wreck, Wategos/IMG_4249.jpg" alt="Suite Bed" loading="lazy">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-cat">1BR Poolside Suites</span>
+            <h4 class="gallery-caption-title">Sea Breeze King Suite</h4>
+          </div>
+        </a>
+      </div>
+
+      <!-- Item 8: Meraki Kitchen Dining -->
+      <div class="gallery-item" data-category="meraki">
+        <a href="#" class="gallery-item-trigger" data-full-src="Rooms/Images/3BR Meraki/IMG_4561.jpg" data-title="Designer Kitchen & Open-Plan Dining">
+          <img src="Rooms/Images/3BR Meraki/IMG_4561.jpg" alt="Kitchen Dining" loading="lazy">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-cat">3BR Meraki Condo</span>
+            <h4 class="gallery-caption-title">Designer Kitchen & Open-Plan Dining</h4>
+          </div>
+        </a>
+      </div>
+
+      <!-- Item 9: Beach House Living -->
+      <div class="gallery-item" data-category="beach-house">
+        <a href="#" class="gallery-item-trigger" data-full-src="Rooms/Images/4BR Beach House + The Pass/Stills/Beach_House_Still_1.jpg" data-title="Beach House Living Sanctuary">
+          <img src="Rooms/Images/4BR Beach House + The Pass/Stills/Beach_House_Still_1.jpg" alt="Living Room" loading="lazy">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-cat">4BR Beach House</span>
+            <h4 class="gallery-caption-title">Beach House Living Sanctuary</h4>
+          </div>
+        </a>
+      </div>
+
+      <!-- Item 10: Poolside Bathroom Ensuite -->
+      <div class="gallery-item" data-category="poolside">
+        <a href="#" class="gallery-item-trigger" data-full-src="Rooms/Images/1BR Sea Breeze, Tallows, The Wreck, Wategos/IMG_4267.jpg" data-title="Private Ensuite with Rain Shower">
+          <img src="Rooms/Images/1BR Sea Breeze, Tallows, The Wreck, Wategos/IMG_4267.jpg" alt="Ensuite Shower" loading="lazy">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-cat">1BR Poolside Suites</span>
+            <h4 class="gallery-caption-title">Private Ensuite with Rain Shower</h4>
+          </div>
+        </a>
+      </div>
+
+      <!-- Item 11: Tropical Garden Pavilions -->
+      <div class="gallery-item" data-category="pool-grounds balinese">
+        <a href="#" class="gallery-item-trigger" data-full-src="Home/Images/Slider 5.jpg" data-title="Lush Tropical Garden Sanctuary">
+          <img src="Home/Images/Slider 5.jpg" alt="Gardens" loading="lazy">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-cat">Balinese Touches</span>
+            <h4 class="gallery-caption-title">Lush Tropical Garden Sanctuary</h4>
+          </div>
+        </a>
+      </div>
+
+      <!-- Item 12: Meraki Alfresco Terrace -->
+      <div class="gallery-item" data-category="meraki pool-grounds">
+        <a href="#" class="gallery-item-trigger" data-full-src="Rooms/Images/3BR Meraki/IMG_4600.jpg" data-title="Elevated Alfresco Dining Terrace">
+          <img src="Rooms/Images/3BR Meraki/IMG_4600.jpg" alt="Terrace" loading="lazy">
+          <div class="gallery-caption-overlay">
+            <span class="gallery-caption-cat">3BR Meraki Condo</span>
+            <h4 class="gallery-caption-title">Elevated Alfresco Dining Terrace</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       FULLSCREEN LIGHTBOX MODAL
+       ========================================================================== -->
+  <div class="lightbox-modal" id="gallery-lightbox" role="dialog" aria-modal="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">✕</button>
+    <button class="lightbox-nav-btn lightbox-prev" id="lightbox-prev" aria-label="Previous photo">‹</button>
+    <button class="lightbox-nav-btn lightbox-next" id="lightbox-next" aria-label="Next photo">›</button>
+
+    <div class="lightbox-content">
+      <img src="" alt="" id="lightbox-img" class="lightbox-img">
+      <div class="lightbox-info">
+        <h4 id="lightbox-title" style="font-family: var(--font-serif); font-size: 1.25rem;"></h4>
+        <span id="lightbox-count" style="font-size: 0.8125rem; color: var(--accent-gold);"></span>
+      </div>
+    </div>
+  </div>
+
+    <!-- ==========================================================================
+       SITE FOOTER (Aloha Byron Bay Signature Earth Tone Footer)
+       ========================================================================== -->
+  <footer class="site-footer-aloha">
+    <div class="container">
+      <div class="footer-aloha-container">
+        <form class="footer-aloha-form" onsubmit="event.preventDefault(); window.azurToast && window.azurToast('Thank you for subscribing to Azur Byron Bay.');">
+          <input type="text" placeholder="NAME" class="aloha-subscribe-input" aria-label="Your Name" required>
+          <input type="email" placeholder="EMAIL" class="aloha-subscribe-input" aria-label="Your Email" required>
+          <button type="submit" class="btn-aloha-subscribe">SUBSCRIBE</button>
+        </form>
+
+        <ul class="footer-aloha-links">
+          <li><a href="#" class="footer-aloha-link">TERMS & CONDITIONS</a></li>
+          <li><a href="#" class="footer-aloha-link">PRIVACY POLICY</a></li>
+          <li><a href="contact.html" class="footer-aloha-link">CONTACT</a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener" class="footer-aloha-link">INSTAGRAM</a></li>
+          <li><a href="https://facebook.com" target="_blank" rel="noopener" class="footer-aloha-link">FACEBOOK</a></li>
+          <li><a href="https://pinterest.com" target="_blank" rel="noopener" class="footer-aloha-link">PINTEREST</a></li>
+        </ul>
+
+        <p class="footer-aloha-credits">
+          44 Shirley Street, Byron Bay NSW 2481, Australia • Concierge: <a href="tel:+61266857500" style="color: inherit; text-decoration: underline;">(02) 6685 7500</a> • <a href="mailto:stay@azurbyronbay.com.au" style="color: inherit; text-decoration: underline;">stay@azurbyronbay.com.au</a><br>
+          Just 5 minutes walk to Byron Town Centre & Main Beach.<br>
+          <span style="display: block; margin-top: 0.75rem; opacity: 0.8; font-size: 0.75rem;">
+            Azur Byron Bay acknowledges the Arakwal people of the Bundjalung Nation, the traditional custodians of this land.
+          </span>
+          © <span id="year">2026</span> Azur Byron Bay. All Rights Reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MOBILE APP BOTTOM DOCK
+       ========================================================================== -->
+  <nav class="mobile-app-bottom-bar" aria-label="Mobile Bottom App Bar">
+    <a href="index.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <span class="app-dock-label">Home</span>
+    </a>
+    <a href="rooms.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></svg>
+      <span class="app-dock-label">Rooms</span>
+    </a>
+    <button class="app-dock-book-btn open-booking-modal" aria-label="Open booking sheet">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>Book</span>
+    </button>
+    <a href="about.html" class="app-dock-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      <span class="app-dock-label">Layout</span>
+    </a>
+    <a href="gallery.html" class="app-dock-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span class="app-dock-label">Gallery</span>
+    </a>
+  </nav>
+
+  <!-- Slide-up Bottom Sheet (Booking) -->
+  <div class="bottom-sheet-backdrop"></div>
+  <div class="bottom-sheet-modal" role="dialog" aria-modal="true">
+    <div class="sheet-drag-handle-bar"><div class="sheet-drag-handle"></div></div>
+    <div class="sheet-header">
+      <h3 class="sheet-title">Check Availability</h3>
+      <button class="sheet-close-btn" aria-label="Close">✕</button>
+    </div>
+    <form class="sheet-body inquiry-form">
+      <div class="app-form-group">
+        <label class="app-form-label">Accommodation Type</label>
+        <select class="app-form-select" id="sheet-room-select" name="room_type">
+          <option value="beach-house">4BR Beach House + The Pass</option>
+          <option value="meraki-condo">3BR Meraki Condo</option>
+          <option value="poolside-suite">1BR Poolside Suite</option>
+          <option value="entire-estate">Entire Azur Estate (Up to 22)</option>
+        </select>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+        <div class="app-form-group">
+          <label class="app-form-label">Check In</label>
+          <input type="date" class="app-form-input" id="sheet-checkin" name="checkin" required>
+        </div>
+        <div class="app-form-group">
+          <label class="app-form-label">Check Out</label>
+          <input type="date" class="app-form-input" id="sheet-checkout" name="checkout" required>
+        </div>
+      </div>
+      <div class="app-form-group">
+        <label class="app-form-label">Guests</label>
+        <div class="guest-stepper-wrap" data-min="1" data-max="22">
+          <button type="button" class="stepper-btn stepper-dec">−</button>
+          <span class="stepper-value">2</span>
+          <button type="button" class="stepper-btn stepper-inc">+</button>
+          <input type="hidden" name="guests_count" value="2">
+        </div>
+      </div>
+      <div class="app-form-group">
+        <label class="app-form-label">Your Name</label>
+        <input type="text" class="app-form-input" placeholder="Full name" required>
+      </div>
+      <div class="app-form-group">
+        <label class="app-form-label">Email or Phone</label>
+        <input type="text" class="app-form-input" placeholder="you@domain.com or phone" required>
+      </div>
+      <button type="submit" class="btn btn-terracotta" style="width: 100%; padding: 1rem;">Send Reservation Inquiry</button>
+    </form>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/booking.js"></script>
+  <script type="module" src="js/gallery.js"></script>
+</body>
+</html>
+
