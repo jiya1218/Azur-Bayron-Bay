@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initMobileDrawer();
+  initDirectBookingRedirects();
   initBottomSheet();
   initVideoModals();
   initFloorPlanModal();
@@ -62,13 +63,74 @@ function initMobileDrawer() {
 }
 
 /* ==========================================================================
+   DIRECT ONLINE BOOKING REDIRECT
+   Target: Azur Villas Byron Bay Direct Booking Engine
+   ========================================================================== */
+export const AZUR_DIRECT_BOOKING_URL = 'https://book-directonline.com/properties/azurvillasbyronbaydirect?locale=en&referrer=canvas&items[0][adults]=2&items[0][children]=0&items[0][infants]=0&currency=AUD&checkInDate=2026-09-26&checkOutDate=2026-09-27&trackPage=yes';
+
+export function getDirectBookingUrl(params = {}) {
+  try {
+    const url = new URL(AZUR_DIRECT_BOOKING_URL);
+    if (params.checkin) url.searchParams.set('checkInDate', params.checkin);
+    if (params.checkout) url.searchParams.set('checkOutDate', params.checkout);
+    if (params.guests) url.searchParams.set('items[0][adults]', params.guests);
+    return url.toString();
+  } catch (e) {
+    return AZUR_DIRECT_BOOKING_URL;
+  }
+}
+
+export function openDirectBooking(params = {}) {
+  const targetUrl = getDirectBookingUrl(params);
+  window.open(targetUrl, '_blank', 'noopener,noreferrer');
+}
+
+function initDirectBookingRedirects() {
+  const directSelectors = [
+    '.btn-book-top',
+    '.btn-aloha-book',
+    '.app-dock-book-btn',
+    '.booking-bar-mobile-trigger',
+    '.btn-check-rates',
+    '.room-card-actions a[href*="book-directonline.com"]',
+    '[data-booking-direct]'
+  ].join(', ');
+
+  const triggers = document.querySelectorAll(directSelectors);
+
+  triggers.forEach(el => {
+    el.addEventListener('click', (e) => {
+      // Gather any chosen dates or guest numbers from availability bar
+      const barCheckin = document.querySelector('#bar-checkin')?.value || document.querySelector('#sheet-checkin')?.value;
+      const barCheckout = document.querySelector('#bar-checkout')?.value || document.querySelector('#sheet-checkout')?.value;
+      const barGuests = document.querySelector('#bar-guests')?.value || document.querySelector('input[name="guests_count"]')?.value;
+
+      const dynamicUrl = getDirectBookingUrl({
+        checkin: barCheckin,
+        checkout: barCheckout,
+        guests: barGuests
+      });
+
+      if (el.tagName && el.tagName.toLowerCase() === 'a') {
+        el.href = dynamicUrl;
+        el.target = '_blank';
+        el.rel = 'noopener noreferrer';
+      } else {
+        e.preventDefault();
+        window.open(dynamicUrl, '_blank', 'noopener,noreferrer');
+      }
+    });
+  });
+}
+
+/* ==========================================================================
    MOBILE APP SLIDE-UP BOTTOM SHEET (BOOKING & INQUIRY)
    ========================================================================== */
 function initBottomSheet() {
   const sheet = document.querySelector('.bottom-sheet-modal');
   const backdrop = document.querySelector('.bottom-sheet-backdrop');
   const closeBtns = document.querySelectorAll('.sheet-close-btn, .close-sheet-trigger');
-  const openTriggers = document.querySelectorAll('.open-booking-modal, .booking-bar-mobile-trigger, .app-dock-book-btn');
+  const openTriggers = document.querySelectorAll('.open-inquiry-modal, [data-open-sheet]');
   const handleBar = document.querySelector('.sheet-drag-handle-bar');
 
   if (!sheet || !backdrop) return;
