@@ -224,86 +224,76 @@ function initVideoModals() {
     if (unmuteBtn) unmuteBtn.style.display = 'none';
   }
 
-  function unmutePlayer() {
-    player.muted = false;
-    hideUnmuteButton();
-  }
-
   if (unmuteBtn) {
-    unmuteBtn.addEventListener('click', (e) => {
+    unmuteBtn.addEventListener('click', function(e) {
       e.stopPropagation();
-      unmutePlayer();
+      player.muted = false;
+      hideUnmuteButton();
     });
   }
 
-  player.addEventListener('click', () => {
-    if (player.paused) {
-      player.play();
-    } else if (player.muted) {
-      unmutePlayer();
+  function tryPlay() {
+    player.muted = false;
+    var p = player.play();
+    if (p && p.catch) {
+      p.catch(function() {
+        // Browser blocked unmuted autoplay - play muted instead
+        player.muted = true;
+        showUnmuteButton();
+        player.play().catch(function() {});
+      });
     }
-  });
-
-  player.addEventListener('volumechange', () => {
-    if (!player.muted) {
-      hideUnmuteButton();
-    }
-  });
+  }
 
   function openVideo(src) {
     if (!src) return;
 
-    // Cache-buster ensures browser skips any old cached HEVC data from disk
-    const cleanSrc = src.includes('?') ? src : `${src}?v=h264_2`;
-
-    player.src = cleanSrc;
-    player.load();
+    player.src = src;
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
     hideUnmuteButton();
 
-    // 1. Attempt unmuted playback first
-    player.muted = false;
-    const playPromise = player.play();
+    // Wait for video to be ready before playing
+    player.oncanplay = function() {
+      player.oncanplay = null;
+      tryPlay();
+    };
+    player.load();
 
-    if (playPromise !== undefined) {
-      playPromise.catch((err) => {
-        console.warn('Unmuted playback prevented by browser autoplay policy, switching to muted:', err);
-        // 2. Fallback to muted autoplay so video starts playing immediately
-        player.muted = true;
-        showUnmuteButton();
-        player.play().catch(e => {
-          console.error('Muted autoplay also failed:', e);
-        });
-      });
-    }
+    // Fallback: if canplay doesn't fire within 3s, try playing anyway
+    setTimeout(function() {
+      if (player.paused && modal.classList.contains('open')) {
+        tryPlay();
+      }
+    }, 3000);
   }
 
   function closeVideo() {
     modal.classList.remove('open');
     player.pause();
     player.currentTime = 0;
-    player.src = '';
+    player.removeAttribute('src');
+    player.load();
     hideUnmuteButton();
     document.body.style.overflow = '';
   }
 
-  triggers.forEach(trigger => {
-    trigger.addEventListener('click', (e) => {
+  triggers.forEach(function(trigger) {
+    trigger.addEventListener('click', function(e) {
       e.preventDefault();
-      const btn = e.target.closest('[data-video-src]');
-      const src = btn ? btn.getAttribute('data-video-src') : trigger.getAttribute('data-video-src');
+      var btn = e.target.closest('[data-video-src]');
+      var src = btn ? btn.getAttribute('data-video-src') : trigger.getAttribute('data-video-src');
       if (src) openVideo(src);
     });
   });
 
-  modal.addEventListener('click', (e) => {
+  modal.addEventListener('click', function(e) {
     if (e.target === modal || e.target.closest('.modal-close-btn')) {
       closeVideo();
     }
   });
 
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && modal.classList.contains('open')) {
       closeVideo();
     }
