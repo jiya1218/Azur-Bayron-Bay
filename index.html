@@ -30,7 +30,7 @@
             <ul class="nav-links">
               <li><a href="index.html" class="nav-link active">Home</a></li>
               <li><a href="about.html" class="nav-link">About</a></li>
-              <li><a href="explore.html" class="nav-link">Explore</a></li>
+              <li><a href="https://www.visitnsw.com/destinations/north-coast/byron-bay-area/byron-bay" target="_blank" rel="noopener noreferrer" class="nav-link">Explore</a></li>
               <li><a href="rooms.html" class="nav-link">Rooms</a></li>
               <li><a href="group-bookings.html" class="nav-link">Group Bookings</a></li>
               <li><a href="contact.html" class="nav-link">Contact</a></li>
@@ -65,7 +65,7 @@
       <ul class="drawer-links">
         <li><a href="index.html" class="drawer-link active">Home <span>→</span></a></li>
         <li><a href="about.html" class="drawer-link">About <span>→</span></a></li>
-        <li><a href="explore.html" class="drawer-link">Explore <span>→</span></a></li>
+        <li><a href="https://www.visitnsw.com/destinations/north-coast/byron-bay-area/byron-bay" target="_blank" rel="noopener noreferrer" class="drawer-link">Explore <span>↗</span></a></li>
         <li><a href="rooms.html" class="drawer-link">Rooms <span>→</span></a></li>
         <li><a href="group-bookings.html" class="drawer-link">Group Bookings <span>→</span></a></li>
         <li><a href="contact.html" class="drawer-link">Contact <span>→</span></a></li>
@@ -134,12 +134,18 @@
     <div class="container">
       <div class="aloha-intro-container">
         <span class="aloha-kicker">AZUR BYRON BAY, NSW</span>
-        <h1 class="aloha-intro-title">Experience Boutique Byron Bay Living.</h1>
+        <h1 class="aloha-intro-title">Boutique Accommodation in the Heart of Byron Bay</h1>
         <p class="aloha-intro-desc">
-          A collection of stays ranging from intimate Poolside Suites, contemporary 3BR Meraki Condo to our Signature 4BR Beach House.
+          A relaxed coastal stay with a touch of Balinese charm.
         </p>
         <p class="aloha-intro-subtitle">
-          Moments from the Ocean, a relaxed base for your North Coast adventure.
+          Just a five-minute walk from Byron Bay’s town centre and Main Beach, Azur offers beautifully considered beach houses and poolside accommodation designed for couples, families and friends.
+        </p>
+        <p class="aloha-intro-subtitle" style="margin-top: 0.85rem;">
+          Thoughtful interiors, tropical surrounds and inviting shared spaces create an effortless place to slow down, reconnect and enjoy Byron at your own pace.
+        </p>
+        <p class="aloha-intro-tagline" style="font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: var(--accent-terracotta); margin-top: 1.25rem; margin-bottom: 2rem;">
+          Stay close to everything. Feel away from it all.
         </p>
         <a href="https://book-directonline.com/properties/azurvillasbyronbaydirect?locale=en&referrer=canvas&items[0][adults]=2&items[0][children]=0&items[0][infants]=0&currency=AUD&checkInDate=2026-09-26&checkOutDate=2026-09-27&trackPage=yes" target="_blank" rel="noopener noreferrer" class="btn-aloha-book">
           BOOK NOW
@@ -597,23 +603,29 @@
   </section>
 
   <!-- ==========================================================================
-       CINEMATIC VIDEO TOUR BANNER
+       CINEMATIC VIDEO TOUR BANNER (Seamless Ambient Video + Modal Player)
        ========================================================================== -->
   <section class="section-cinematic">
-    <img src="Home/Images/Slider 2.jpg" alt="Azur Byron Bay property video tour" class="cinematic-bg-img" loading="lazy">
+    <video class="cinematic-bg-video" autoplay muted loop playsinline poster="Home/Images/Slider 2.jpg">
+      <source src="Home/Entire Property Video.mp4" type="video/mp4">
+    </video>
+    <div class="cinematic-overlay"></div>
     <div class="cinematic-content">
-      <button class="play-pulse-btn" data-video-src="Home/Entire Property Video.mp4" aria-label="Play full property video">
+      <button class="play-pulse-btn" data-video-src="Home/Entire Property Video.mp4" aria-label="Play full property video with sound">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <polygon points="5 3 19 12 5 21 5 3"/>
         </svg>
       </button>
       <span class="kicker kicker-light">IMMERSIVE WALKTHROUGH</span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.2; margin-bottom: 1rem;">
+      <h2 style="font-family: var(--font-serif); font-size: clamp(2.2rem, 3.8vw, 3.25rem); line-height: 1.2; margin-bottom: 1rem;">
         Experience Azur Byron Bay
       </h2>
-      <p style="font-size: 1.0625rem; color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto;">
+      <p style="font-size: 1.0625rem; color: rgba(255,255,255,0.92); max-width: 620px; margin: 0 auto 1.5rem; text-shadow: 0 1px 4px rgba(0,0,0,0.5);">
         Take a virtual stroll through our sun-drenched gardens, sparkling pool, poolside pavilions, and tranquil interior sanctuaries.
       </p>
+      <button class="btn btn-secondary" data-video-src="Home/Entire Property Video.mp4" style="background: rgba(255,255,255,0.25); backdrop-filter: blur(8px); border-color: rgba(255,255,255,0.6); color: #fff; cursor: pointer;">
+        Watch Full Tour with Sound →
+      </button>
     </div>
   </section>
 
@@ -674,7 +686,7 @@
 
       <div class="insta-grid">
         <div class="insta-item">
-          <img src="Rooms/Images/1BR Sea Breeze, Tallows, The Wreck, Wategos/IMG_4196.jpg" alt="Poolside retreat" loading="lazy">
+          <img src="Rooms/Images/1BR Sea Breeze, Tallows, The Wreck, Wategos/IMG_4366.jpg" alt="Poolside retreat" loading="lazy">
           <div class="insta-overlay">
             <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </div>
@@ -692,7 +704,7 @@
           </div>
         </div>
         <div class="insta-item">
-          <img src="Rooms/Images/1BR Sea Breeze, Tallows, The Wreck, Wategos/IMG_4267.jpg" alt="Bath sanctuary" loading="lazy">
+          <img src="Rooms/Images/1BR Sea Breeze, Tallows, The Wreck, Wategos/IMG_4444.jpg" alt="Bath sanctuary" loading="lazy">
           <div class="insta-overlay">
             <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </div>
