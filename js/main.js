@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initDirectBookingRedirects();
   initBottomSheet();
   initVideoModals();
-  initBackgroundVideos();
   initFloorPlanModal();
   initHeroMedia();
   initPanoramicHero();
@@ -204,48 +203,8 @@ function initBottomSheet() {
 }
 
 /* ==========================================================================
-   CINEMATIC VIDEO MODAL & AMBIENT PLAYBACK
+   CINEMATIC VIDEO MODAL
    ========================================================================== */
-function initBackgroundVideos() {
-  const bgVideos = document.querySelectorAll('.cinematic-bg-video, video[autoplay]');
-  bgVideos.forEach(video => {
-    // Explicitly enforce muted DOM properties required by browser autoplay policies
-    video.muted = true;
-    video.defaultMuted = true;
-    video.playsInline = true;
-    video.setAttribute('playsinline', '');
-    video.setAttribute('muted', '');
-    video.setAttribute('loop', '');
-
-    const tryPlay = () => {
-      const promise = video.play();
-      if (promise !== undefined) {
-        promise.catch(() => {
-          // If browser policy blocks autoplay on page load, start playing on first user gesture
-          const handleFirstGesture = () => {
-            video.muted = true;
-            video.play().catch(() => {});
-            window.removeEventListener('scroll', handleFirstGesture);
-            window.removeEventListener('click', handleFirstGesture);
-            window.removeEventListener('touchstart', handleFirstGesture);
-          };
-          window.addEventListener('scroll', handleFirstGesture, { passive: true, once: true });
-          window.addEventListener('click', handleFirstGesture, { once: true });
-          window.addEventListener('touchstart', handleFirstGesture, { once: true });
-        });
-      }
-    };
-
-    if (video.readyState >= 2) {
-      tryPlay();
-    } else {
-      video.addEventListener('loadeddata', tryPlay, { once: true });
-      video.addEventListener('canplay', tryPlay, { once: true });
-      tryPlay();
-    }
-  });
-}
-
 function initVideoModals() {
   const modal = document.querySelector('#video-modal');
   const player = document.querySelector('#video-modal-player');
@@ -255,44 +214,15 @@ function initVideoModals() {
 
   function openVideo(src) {
     if (!src) return;
-
-    // Properly encode URI components to handle spaces and special characters like '+' safely
-    const encodedSrc = src.split('/').map(segment => encodeURIComponent(segment)).join('/');
-
-    // Clean existing source child elements to avoid browser media conflict errors
-    while (player.firstChild) {
-      player.removeChild(player.firstChild);
-    }
-
-    // Add encoded primary source
-    const source1 = document.createElement('source');
-    source1.src = encodedSrc;
-    source1.type = 'video/mp4';
-    player.appendChild(source1);
-
-    // Add unencoded fallback source
-    const source2 = document.createElement('source');
-    source2.src = src;
-    source2.type = 'video/mp4';
-    player.appendChild(source2);
-
-    // Assign direct src attribute for maximum browser compatibility
-    player.src = encodedSrc;
+    player.src = src;
     player.load();
-
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
-
-    // Unmute player for interactive full modal viewing
-    player.muted = false;
-    player.volume = 1.0;
 
     const playPromise = player.play();
     if (playPromise !== undefined) {
       playPromise.catch((err) => {
-        console.warn('Playback with sound prevented, attempting muted play:', err);
-        player.muted = true;
-        player.play().catch(() => {});
+        console.warn('Playback error:', err);
       });
     }
   }
@@ -301,18 +231,15 @@ function initVideoModals() {
     modal.classList.remove('open');
     player.pause();
     player.currentTime = 0;
-    while (player.firstChild) {
-      player.removeChild(player.firstChild);
-    }
-    player.removeAttribute('src');
-    player.load();
+    player.src = '';
     document.body.style.overflow = '';
   }
 
   triggers.forEach(trigger => {
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
-      const src = trigger.getAttribute('data-video-src');
+      const btn = e.target.closest('[data-video-src]');
+      const src = btn ? btn.getAttribute('data-video-src') : trigger.getAttribute('data-video-src');
       if (src) openVideo(src);
     });
   });

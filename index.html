@@ -603,28 +603,24 @@
   </section>
 
   <!-- ==========================================================================
-       CINEMATIC VIDEO TOUR BANNER (Seamless Ambient Video + Modal Player)
+       CINEMATIC VIDEO TOUR BANNER
        ========================================================================== -->
   <section class="section-cinematic">
-    <video class="cinematic-bg-video" autoplay muted loop playsinline poster="Home/Images/Slider 2.jpg" preload="auto">
-      <source src="Home/Entire%20Property%20Video.mp4" type="video/mp4">
-      <source src="Home/Entire Property Video.mp4" type="video/mp4">
-    </video>
-    <div class="cinematic-overlay"></div>
+    <img src="Home/Images/Slider 2.jpg" alt="Azur Byron Bay property video tour" class="cinematic-bg-img" loading="lazy">
     <div class="cinematic-content">
-      <button class="play-pulse-btn" data-video-src="Home/Entire Property Video.mp4" aria-label="Play full property video with sound">
+      <button class="play-pulse-btn" data-video-src="Home/Entire Property Video.mp4" aria-label="Play full property video">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <polygon points="5 3 19 12 5 21 5 3"/>
         </svg>
       </button>
       <span class="kicker kicker-light">IMMERSIVE WALKTHROUGH</span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(2.2rem, 3.8vw, 3.25rem); line-height: 1.2; margin-bottom: 1rem;">
+      <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.2; margin-bottom: 1rem;">
         Experience Azur Byron Bay
       </h2>
-      <p style="font-size: 1.0625rem; color: rgba(255,255,255,0.92); max-width: 620px; margin: 0 auto 1.5rem; text-shadow: 0 1px 4px rgba(0,0,0,0.5);">
+      <p style="font-size: 1.0625rem; color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto 1.5rem;">
         Take a virtual stroll through our sun-drenched gardens, sparkling pool, poolside pavilions, and tranquil interior sanctuaries.
       </p>
-      <button class="btn btn-secondary" data-video-src="Home/Entire Property Video.mp4" style="background: rgba(255,255,255,0.25); backdrop-filter: blur(8px); border-color: rgba(255,255,255,0.6); color: #fff; cursor: pointer;">
+      <button class="btn btn-secondary play-pulse-btn" data-video-src="Home/Entire Property Video.mp4" style="background: rgba(255,255,255,0.25); backdrop-filter: blur(8px); border-color: rgba(255,255,255,0.6); color: #fff; cursor: pointer;">
         Watch Full Tour with Sound →
       </button>
     </div>
