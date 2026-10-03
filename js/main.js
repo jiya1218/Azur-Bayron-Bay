@@ -66,9 +66,10 @@ function initMobileDrawer() {
    DIRECT ONLINE BOOKING REDIRECT
    Target: Azur Villas Byron Bay Direct Booking Engine
    ========================================================================== */
-export const AZUR_DIRECT_BOOKING_URL = 'https://book-directonline.com/properties/azurvillasbyronbaydirect?locale=en&referrer=canvas&items[0][adults]=2&items[0][children]=0&items[0][infants]=0&currency=AUD&checkInDate=2026-09-26&checkOutDate=2026-09-27&trackPage=yes';
+const AZUR_DIRECT_BOOKING_URL = 'https://book-directonline.com/properties/azurvillasbyronbaydirect?locale=en&referrer=canvas&items[0][adults]=2&items[0][children]=0&items[0][infants]=0&currency=AUD&checkInDate=2026-09-26&checkOutDate=2026-09-27&trackPage=yes';
+window.AZUR_DIRECT_BOOKING_URL = AZUR_DIRECT_BOOKING_URL;
 
-export function getDirectBookingUrl(params = {}) {
+function getDirectBookingUrl(params = {}) {
   try {
     const url = new URL(AZUR_DIRECT_BOOKING_URL);
     if (params.checkin) url.searchParams.set('checkInDate', params.checkin);
@@ -79,11 +80,13 @@ export function getDirectBookingUrl(params = {}) {
     return AZUR_DIRECT_BOOKING_URL;
   }
 }
+window.getDirectBookingUrl = getDirectBookingUrl;
 
-export function openDirectBooking(params = {}) {
+function openDirectBooking(params = {}) {
   const targetUrl = getDirectBookingUrl(params);
   window.open(targetUrl, '_blank', 'noopener,noreferrer');
 }
+window.openDirectBooking = openDirectBooking;
 
 function initDirectBookingRedirects() {
   const directSelectors = [
