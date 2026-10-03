@@ -209,20 +209,69 @@ function initVideoModals() {
   const modal = document.querySelector('#video-modal');
   const player = document.querySelector('#video-modal-player');
   const triggers = document.querySelectorAll('[data-video-src]');
+  const unmuteBtn = document.querySelector('#video-unmute-overlay-btn');
 
   if (!modal || !player) return;
 
+  function showUnmuteButton() {
+    if (unmuteBtn) unmuteBtn.style.display = 'inline-flex';
+  }
+
+  function hideUnmuteButton() {
+    if (unmuteBtn) unmuteBtn.style.display = 'none';
+  }
+
+  function unmutePlayer() {
+    player.muted = false;
+    hideUnmuteButton();
+  }
+
+  if (unmuteBtn) {
+    unmuteBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      unmutePlayer();
+    });
+  }
+
+  player.addEventListener('click', () => {
+    if (player.paused) {
+      player.play();
+    } else if (player.muted) {
+      unmutePlayer();
+    }
+  });
+
+  player.addEventListener('volumechange', () => {
+    if (!player.muted) {
+      hideUnmuteButton();
+    }
+  });
+
   function openVideo(src) {
     if (!src) return;
-    player.src = src;
+
+    // Cache-buster ensures browser skips any old cached HEVC data from disk
+    const cleanSrc = src.includes('?') ? src : `${src}?v=h264_2`;
+
+    player.src = cleanSrc;
     player.load();
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
+    hideUnmuteButton();
 
+    // 1. Attempt unmuted playback first
+    player.muted = false;
     const playPromise = player.play();
+
     if (playPromise !== undefined) {
       playPromise.catch((err) => {
-        console.warn('Playback error:', err);
+        console.warn('Unmuted playback prevented by browser autoplay policy, switching to muted:', err);
+        // 2. Fallback to muted autoplay so video starts playing immediately
+        player.muted = true;
+        showUnmuteButton();
+        player.play().catch(e => {
+          console.error('Muted autoplay also failed:', e);
+        });
       });
     }
   }
@@ -232,6 +281,7 @@ function initVideoModals() {
     player.pause();
     player.currentTime = 0;
     player.src = '';
+    hideUnmuteButton();
     document.body.style.overflow = '';
   }
 
