@@ -254,11 +254,26 @@ function initVideoModals() {
     document.body.style.overflow = 'hidden';
     hideUnmuteButton();
 
-    if (player.src !== src && !player.src.endsWith(encodeURI(src)) && !player.src.endsWith(src)) {
-      player.src = src;
-      player.load();
+    const normalizedSrc = encodeURI(src.replace(/^\/+/, ''));
+    const sourceEl = player.querySelector('source');
+
+    if (sourceEl) {
+      sourceEl.src = normalizedSrc;
+    }
+    player.src = normalizedSrc;
+    player.load();
+
+    let started = false;
+    function attemptPlay() {
+      if (started) return;
+      started = true;
+      tryPlay();
     }
 
+    player.onloadedmetadata = attemptPlay;
+    player.oncanplay = attemptPlay;
+
+    // Immediately trigger play to retain user-gesture activation context
     tryPlay();
   }
 

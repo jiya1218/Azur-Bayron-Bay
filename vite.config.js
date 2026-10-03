@@ -18,8 +18,58 @@ function copyStaticDirs() {
   };
 }
 
+function serveMediaMiddleware() {
+  return {
+    name: 'serve-media-middleware',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        try {
+          const rawUrl = req.url.split('?')[0];
+          const decodedUrl = decodeURI(rawUrl);
+          if (decodedUrl.endsWith('.mp4') || decodedUrl.endsWith('.webm') || decodedUrl.endsWith('.mov')) {
+            const cleanPath = decodedUrl.replace(/^\/+/, '');
+            const filePath = resolve(__dirname, cleanPath);
+            if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+              const stat = fs.statSync(filePath);
+              const fileSize = stat.size;
+              const range = req.headers.range;
+
+              if (range) {
+                const parts = range.replace(/bytes=/, '').split('-');
+                const start = parseInt(parts[0], 10);
+                const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+                const chunksize = end - start + 1;
+                const file = fs.createReadStream(filePath, { start, end });
+                res.writeHead(206, {
+                  'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+                  'Accept-Ranges': 'bytes',
+                  'Content-Length': chunksize,
+                  'Content-Type': 'video/mp4',
+                });
+                file.pipe(res);
+                return;
+              } else {
+                res.writeHead(200, {
+                  'Content-Length': fileSize,
+                  'Content-Type': 'video/mp4',
+                  'Accept-Ranges': 'bytes',
+                });
+                fs.createReadStream(filePath).pipe(res);
+                return;
+              }
+            }
+          }
+        } catch (e) {
+          console.error('serveMediaMiddleware error:', e);
+        }
+        next();
+      });
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [copyStaticDirs()],
+  plugins: [serveMediaMiddleware(), copyStaticDirs()],
   server: {
     port: 3000,
     open: true,
