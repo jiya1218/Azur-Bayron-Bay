@@ -606,7 +606,8 @@
        CINEMATIC VIDEO TOUR BANNER (Seamless Ambient Video + Modal Player)
        ========================================================================== -->
   <section class="section-cinematic">
-    <video class="cinematic-bg-video" autoplay muted loop playsinline poster="Home/Images/Slider 2.jpg">
+    <video class="cinematic-bg-video" autoplay muted loop playsinline poster="Home/Images/Slider 2.jpg" preload="auto">
+      <source src="Home/Entire%20Property%20Video.mp4" type="video/mp4">
       <source src="Home/Entire Property Video.mp4" type="video/mp4">
     </video>
     <div class="cinematic-overlay"></div>
@@ -863,8 +864,7 @@
   <div class="site-modal" id="video-modal" role="dialog" aria-modal="true" aria-label="Video Player">
     <div class="modal-container video-modal-container">
       <button class="modal-close-btn" id="video-modal-close" aria-label="Close video">✕</button>
-      <video id="video-modal-player" class="video-modal-player" controls playsinline>
-        <source src="" type="video/mp4">
+      <video id="video-modal-player" class="video-modal-player" controls playsinline preload="auto">
         Your browser does not support the video tag.
       </video>
     </div>
