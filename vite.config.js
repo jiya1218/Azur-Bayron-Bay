@@ -1,7 +1,25 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import fs from 'fs';
+
+function copyStaticDirs() {
+  return {
+    name: 'copy-static-dirs',
+    closeBundle() {
+      const dirs = ['Home', 'Rooms', 'About', 'Logo', 'Blog', 'Explore', 'Group Bookings', 'js'];
+      dirs.forEach(d => {
+        const src = resolve(__dirname, d);
+        const dest = resolve(__dirname, 'dist', d);
+        if (fs.existsSync(src)) {
+          fs.cpSync(src, dest, { recursive: true, force: true });
+        }
+      });
+    }
+  };
+}
 
 export default defineConfig({
+  plugins: [copyStaticDirs()],
   server: {
     port: 3000,
     open: true,

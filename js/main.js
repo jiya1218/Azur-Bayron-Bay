@@ -234,13 +234,15 @@ function initVideoModals() {
 
   function tryPlay() {
     player.muted = false;
-    var p = player.play();
-    if (p && p.catch) {
-      p.catch(function() {
-        // Browser blocked unmuted autoplay - play muted instead
+    var playPromise = player.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(function(err) {
+        console.warn('Unmuted autoplay prevented, playing muted:', err);
         player.muted = true;
         showUnmuteButton();
-        player.play().catch(function() {});
+        player.play().catch(function(e) {
+          console.warn('Autoplay failed:', e);
+        });
       });
     }
   }
@@ -248,32 +250,22 @@ function initVideoModals() {
   function openVideo(src) {
     if (!src) return;
 
-    player.src = src;
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
     hideUnmuteButton();
 
-    // Wait for video to be ready before playing
-    player.oncanplay = function() {
-      player.oncanplay = null;
-      tryPlay();
-    };
-    player.load();
+    if (player.src !== src && !player.src.endsWith(encodeURI(src)) && !player.src.endsWith(src)) {
+      player.src = src;
+      player.load();
+    }
 
-    // Fallback: if canplay doesn't fire within 3s, try playing anyway
-    setTimeout(function() {
-      if (player.paused && modal.classList.contains('open')) {
-        tryPlay();
-      }
-    }, 3000);
+    tryPlay();
   }
 
   function closeVideo() {
     modal.classList.remove('open');
     player.pause();
     player.currentTime = 0;
-    player.removeAttribute('src');
-    player.load();
     hideUnmuteButton();
     document.body.style.overflow = '';
   }
@@ -410,31 +402,86 @@ function initPanoramicHero() {
 
   if (!track) return;
 
-  const scrollAmount = 450;
+  const panels = Array.from(track.querySelectorAll('.panoramic-panel'));
+  if (panels.length === 0) return;
+
+  function getCurrentIndex() {
+    const trackCenter = track.scrollLeft + track.clientWidth / 2;
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    panels.forEach((panel, i) => {
+      const panelCenter = panel.offsetLeft + panel.offsetWidth / 2;
+      const distance = Math.abs(trackCenter - panelCenter);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = i;
+      }
+    });
+
+    return closestIndex;
+  }
+
+  function scrollToPanel(index) {
+    if (index < 0) {
+      index = panels.length - 1;
+    } else if (index >= panels.length) {
+      index = 0;
+    }
+    const targetPanel = panels[index];
+    if (targetPanel) {
+      targetPanel.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'nearest'
+      });
+    }
+  }
 
   if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const current = getCurrentIndex();
+      scrollToPanel(current - 1);
+      resetAutoTimer();
     });
   }
 
   if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const current = getCurrentIndex();
+      scrollToPanel(current + 1);
+      resetAutoTimer();
     });
   }
 
-  // Auto-scroll loop gently when idle
-  let autoTimer = setInterval(() => {
-    if (track.matches(':hover')) return;
-    if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 15) {
-      track.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      track.scrollBy({ left: 350, behavior: 'smooth' });
-    }
-  }, 4800);
+  let autoTimer = null;
+  function startAutoTimer() {
+    if (autoTimer) clearInterval(autoTimer);
+    autoTimer = setInterval(() => {
+      if (track.matches(':hover')) return;
+      const modal = document.querySelector('#video-modal');
+      if (modal && modal.classList.contains('open')) return;
+      const current = getCurrentIndex();
+      scrollToPanel(current + 1);
+    }, 5000);
+  }
 
-  track.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  function resetAutoTimer() {
+    startAutoTimer();
+  }
+
+  startAutoTimer();
+
+  track.addEventListener('mouseenter', () => {
+    if (autoTimer) clearInterval(autoTimer);
+  });
+  track.addEventListener('mouseleave', () => {
+    startAutoTimer();
+  });
 }
 
 /* ==========================================================================

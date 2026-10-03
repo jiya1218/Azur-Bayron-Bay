@@ -594,24 +594,30 @@ button, input, select, textarea {
   transform: translateY(-50%);
   width: 48px;
   height: 48px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 10;
+  z-index: 20;
   transition: all 0.25s ease;
   color: var(--text-primary);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.hero-nav-arrow svg {
+  pointer-events: none;
 }
 
 .hero-nav-arrow:hover {
   background: #ffffff;
   transform: translateY(-50%) scale(1.08);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
 }
 
 .hero-nav-arrow.prev {
@@ -623,6 +629,7 @@ button, input, select, textarea {
 }
 
 .hero-video-badge-btn {
+  z-index: 25;
   position: absolute;
   bottom: 24px;
   right: 28px;

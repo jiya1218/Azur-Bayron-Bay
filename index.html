@@ -94,7 +94,7 @@
        ========================================================================== -->
   <section class="hero-aloha" id="hero">
     <div class="hero-panoramic-wrapper">
-      <button class="hero-nav-arrow prev" id="panoramic-prev" aria-label="Previous view">
+      <button class="hero-nav-arrow prev" id="panoramic-prev" type="button" aria-label="Previous view">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
 
@@ -116,11 +116,11 @@
         </div>
       </div>
 
-      <button class="hero-nav-arrow next" id="panoramic-next" aria-label="Next view">
+      <button class="hero-nav-arrow next" id="panoramic-next" type="button" aria-label="Next view">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
 
-      <button class="hero-video-badge-btn" data-video-src="Home/Entire Property Video.mp4">
+      <button class="hero-video-badge-btn" type="button" data-video-src="Home/Entire Property Video.mp4">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         Watch Video Tour
       </button>
@@ -861,6 +861,7 @@
     <div class="modal-container video-modal-container">
       <button class="modal-close-btn" id="video-modal-close" aria-label="Close video">✕</button>
       <video id="video-modal-player" class="video-modal-player" controls playsinline preload="auto">
+        <source src="Home/Entire Property Video.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <button class="video-unmute-overlay-btn" id="video-unmute-overlay-btn" aria-label="Unmute video" style="display: none;">
@@ -890,8 +891,8 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/main.js"></script>
-  <script src="js/booking.js"></script>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/booking.js"></script>
 </body>
 </html>
 
