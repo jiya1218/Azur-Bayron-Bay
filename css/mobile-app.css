@@ -297,6 +297,9 @@
   .story-card-title {
     font-size: 1.15rem !important;
     margin-bottom: 0.35rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
   }
 
   .story-card-desc {

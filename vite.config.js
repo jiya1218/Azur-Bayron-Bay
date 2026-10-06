@@ -11,7 +11,7 @@ function copyStaticDirs() {
         const src = resolve(__dirname, d);
         const dest = resolve(__dirname, 'dist', d);
         if (fs.existsSync(src)) {
-          fs.cpSync(src, dest, { recursive: true, force: true });
+          fs.cpSync(src, dest, { recursive: true, force: true, dereference: true });
         }
       });
     }

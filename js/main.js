@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPanoramicHero();
   initContactForms();
   initSmoothScroll();
+  initArticleModal();
 });
 
 /* ==========================================================================
@@ -103,7 +104,6 @@ function initDirectBookingRedirects() {
 
   triggers.forEach(el => {
     el.addEventListener('click', (e) => {
-      // Gather any chosen dates or guest numbers from availability bar
       const barCheckin = document.querySelector('#bar-checkin')?.value || document.querySelector('#sheet-checkin')?.value;
       const barCheckout = document.querySelector('#bar-checkout')?.value || document.querySelector('#sheet-checkout')?.value;
       const barGuests = document.querySelector('#bar-guests')?.value || document.querySelector('input[name="guests_count"]')?.value;
@@ -176,7 +176,6 @@ function initBottomSheet() {
 
   backdrop.addEventListener('click', () => window.closeBookingSheet());
 
-  // Swipe-down to dismiss gesture for native app feel
   if (handleBar) {
     let startY = 0;
     let currentY = 0;
@@ -206,15 +205,25 @@ function initBottomSheet() {
 }
 
 /* ==========================================================================
-   CINEMATIC VIDEO MODAL
+   CINEMATIC VIDEO MODAL (YouTube & Native Video Support)
    ========================================================================== */
 function initVideoModals() {
   const modal = document.querySelector('#video-modal');
   const player = document.querySelector('#video-modal-player');
+  const iframe = document.querySelector('#video-modal-iframe');
   const triggers = document.querySelectorAll('[data-video-src]');
   const unmuteBtn = document.querySelector('#video-unmute-overlay-btn');
 
-  if (!modal || !player) return;
+  if (!modal) return;
+
+  function getYouTubeId(url) {
+    if (!url) return null;
+    const trimmed = url.trim();
+    const match = trimmed.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/i);
+    if (match) return match[1];
+    if (/^[\w-]{11}$/.test(trimmed)) return trimmed;
+    return null;
+  }
 
   function showUnmuteButton() {
     if (unmuteBtn) unmuteBtn.style.display = 'inline-flex';
@@ -224,7 +233,7 @@ function initVideoModals() {
     if (unmuteBtn) unmuteBtn.style.display = 'none';
   }
 
-  if (unmuteBtn) {
+  if (unmuteBtn && player) {
     unmuteBtn.addEventListener('click', function(e) {
       e.stopPropagation();
       player.muted = false;
@@ -233,6 +242,7 @@ function initVideoModals() {
   }
 
   function tryPlay() {
+    if (!player) return;
     player.muted = false;
     var playPromise = player.play();
     if (playPromise !== undefined) {
@@ -254,33 +264,55 @@ function initVideoModals() {
     document.body.style.overflow = 'hidden';
     hideUnmuteButton();
 
-    const normalizedSrc = encodeURI(src.replace(/^\/+/, ''));
-    const sourceEl = player.querySelector('source');
+    const ytId = getYouTubeId(src);
 
-    if (sourceEl) {
-      sourceEl.src = normalizedSrc;
+    if (ytId) {
+      if (player) {
+        player.pause();
+        player.style.display = 'none';
+      }
+      if (iframe) {
+        iframe.style.display = 'block';
+        iframe.src = `https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`;
+      }
+    } else {
+      if (iframe) {
+        iframe.src = '';
+        iframe.style.display = 'none';
+      }
+      if (player) {
+        player.style.display = 'block';
+        const normalizedSrc = encodeURI(src.replace(/^\/+/, ''));
+        const sourceEl = player.querySelector('source');
+        if (sourceEl) {
+          sourceEl.src = normalizedSrc;
+        }
+        player.src = normalizedSrc;
+        player.load();
+
+        let started = false;
+        function attemptPlay() {
+          if (started) return;
+          started = true;
+          tryPlay();
+        }
+
+        player.onloadedmetadata = attemptPlay;
+        player.oncanplay = attemptPlay;
+        tryPlay();
+      }
     }
-    player.src = normalizedSrc;
-    player.load();
-
-    let started = false;
-    function attemptPlay() {
-      if (started) return;
-      started = true;
-      tryPlay();
-    }
-
-    player.onloadedmetadata = attemptPlay;
-    player.oncanplay = attemptPlay;
-
-    // Immediately trigger play to retain user-gesture activation context
-    tryPlay();
   }
 
   function closeVideo() {
     modal.classList.remove('open');
-    player.pause();
-    player.currentTime = 0;
+    if (iframe) {
+      iframe.src = '';
+    }
+    if (player) {
+      player.pause();
+      player.currentTime = 0;
+    }
     hideUnmuteButton();
     document.body.style.overflow = '';
   }
@@ -303,6 +335,66 @@ function initVideoModals() {
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && modal.classList.contains('open')) {
       closeVideo();
+    }
+  });
+}
+
+/* ==========================================================================
+   BLOG ARTICLE READER LIGHTBOX MODAL
+   ========================================================================== */
+function initArticleModal() {
+  const modal = document.querySelector('#article-modal');
+  if (!modal) return;
+
+  const triggers = document.querySelectorAll('[data-article-target]');
+
+  function openArticle(articleId) {
+    const articleDataEl = document.querySelector(`#article-content-${articleId}`);
+    if (!articleDataEl) return;
+
+    const modalTitle = modal.querySelector('#article-modal-title');
+    const modalCategory = modal.querySelector('#article-modal-category');
+    const modalReadtime = modal.querySelector('#article-modal-readtime');
+    const modalImage = modal.querySelector('#article-modal-image');
+    const modalBody = modal.querySelector('#article-modal-body');
+
+    if (modalTitle) modalTitle.textContent = articleDataEl.dataset.title || '';
+    if (modalCategory) modalCategory.textContent = articleDataEl.dataset.category || 'JOURNAL';
+    if (modalReadtime) modalReadtime.textContent = articleDataEl.dataset.readtime || '4 MIN READ';
+    if (modalImage) {
+      modalImage.src = articleDataEl.dataset.image || '';
+      modalImage.alt = articleDataEl.dataset.title || 'Azur Byron Bay Story';
+    }
+    if (modalBody) {
+      modalBody.innerHTML = articleDataEl.innerHTML;
+    }
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeArticle() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  triggers.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = btn.getAttribute('data-article-target');
+      if (id) openArticle(id);
+    });
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal || e.target.closest('.modal-close-btn')) {
+      closeArticle();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closeArticle();
     }
   });
 }

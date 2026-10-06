@@ -35,3 +35,20 @@ desktop.ini
 *.sln
 *.sw?
 *.bak
+
+# Heavy archives & raw asset folders
+Azur Byron Bay-all images nd details/
+Azur Byron Bay-all images nd details.zip
+*.zip
+*.tar
+*.gz
+
+# Local video files (hosted on YouTube)
+*.mp4
+*.webm
+*.mov
+*.avi
+
+# Raw documents (content already integrated into web pages)
+*.docx
+*.doc
