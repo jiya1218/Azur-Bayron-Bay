@@ -536,11 +536,14 @@ function initPanoramicHero() {
       index = 0;
     }
     const targetPanel = panels[index];
-    if (targetPanel) {
-      targetPanel.scrollIntoView({
-        behavior: 'smooth',
-        inline: 'center',
-        block: 'nearest'
+    if (targetPanel && track) {
+      const panelLeft = targetPanel.offsetLeft;
+      const panelWidth = targetPanel.offsetWidth;
+      const trackWidth = track.clientWidth;
+      const targetScroll = panelLeft - (trackWidth - panelWidth) / 2;
+      track.scrollTo({
+        left: Math.max(0, targetScroll),
+        behavior: 'smooth'
       });
     }
   }
@@ -565,11 +568,17 @@ function initPanoramicHero() {
     });
   }
 
+  function isHeroInViewport() {
+    const rect = track.getBoundingClientRect();
+    return rect.bottom > 80 && rect.top < window.innerHeight;
+  }
+
   let autoTimer = null;
   function startAutoTimer() {
     if (autoTimer) clearInterval(autoTimer);
     autoTimer = setInterval(() => {
       if (track.matches(':hover')) return;
+      if (!isHeroInViewport()) return;
       const modal = document.querySelector('#video-modal');
       if (modal && modal.classList.contains('open')) return;
       const current = getCurrentIndex();
